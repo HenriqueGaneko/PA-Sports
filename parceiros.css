@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.akshar-uniquifier {
+  font-family: "Akshar", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: akshar;
+}
+
+body {
+    background: linear-gradient(to bottom, #4b6fa8, #1a2640, #0a0f1a);
+    color: white;
+}
+
+header {
+    background: linear-gradient(to right, #17328C, #091138, #17328C);
+    width: 100%;
+    height: 100px;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.logo {
+    align-items: center;
+    font-size: 20px;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+.main-menu {
+    display: flex;
+    list-style: none;
+}
+
+.main-menu li {
+    margin-left: 20px;
+}
+
+.main-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    padding: 35px;
+}
+
+.main-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #00bfff;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s;
+}
+
+.main-menu a:hover::after {
+    width: 100%;
+}
+
+.social-icons {
+    margin-right: 30px;
+    display: flex;
+    padding: 15px;
+    align-items: center;
+}
+
+.social-icons a {
+    color: white;
+    margin-left: 15px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+  .voltar{
+    margin-left: 30px;
+    margin-top: -20px;
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #D9D9D9;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 1.5;
+    outline: none;
+    overflow: hidden;
+    padding: 13px 20px;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+  
+  .voltar:hover {
+    background-color: #a8a8a8;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+  }
+  
+  .voltar:active {
+    transform: translateY(2px);
+    transition-duration: .35s;
+  }
+  
+  
+  h1 {
+      text-align: center;
+      padding: 20px 0 5px;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    
+    main {
+        padding: 40px;
+        text-align: center;
+      }
+      
+
+  .parceiros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-items: center;
+  }
+  
+  .parceiro-card {
+    background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  .logo-box {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .parceiro-card h2 {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .parceiro-card p {
+    font-size: 12px;
+    text-align: justify;
+  }
+  
+  footer {
+    background: linear-gradient(to right, #17328C, #091138, #17328C);
+    width: 100%;
+    height: 160px;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-info h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer-info p {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.footer-info a {
+    color: white;
+}
+
+.footer-info span {
+    color: #00bfff;
+}
+
+.footer-contact a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-social h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer-social span {
+    color: #00bfff;
+}
+
+.social-links1 a {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.social-links2 a {
+    margin-right: 1px;
+}

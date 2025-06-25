@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.akshar-uniquifier {
+  font-family: "Akshar", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: akshar;
+}
+
+body {
+    color: white;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Seção com gradiente entre banner e footer */
+.content-section {
+    background: linear-gradient(to bottom, #4b6fa8, #1a2640, #0a0f1a);
+    width: 100%;
+    padding: 40px 0;
+}
+
+/* Header */
+header {
+    background: linear-gradient(to right, #17328C, #091138, #17328C);
+    width: 100%;
+    height: 100px;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.logo {
+    align-items: center;
+    font-size: 20px;
+    margin-left: 80px;
+    margin-top: 20px;
+}
+
+.main-menu {
+    display: flex;
+    list-style: none;
+}
+
+.main-menu li {
+    margin-left: 20px;
+}
+
+.main-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    padding: 35px;
+}
+
+.main-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #00bfff;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s;
+}
+
+.main-menu a:hover::after {
+    width: 100%;
+}
+
+.social-icons {
+    margin-right: 30px;
+    display: flex;
+    padding: 15px;
+    align-items: center;
+}
+
+.social-icons a {
+    color: white;
+    margin-left: 15px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.banner-carousel {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+}
+
+.banner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.banner.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Estilo das setas do banner */
+.banner-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-arrow.left {
+  left: 20px;
+}
+
+.banner-arrow.right {
+  right: 20px;
+}
+
+.banner-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Texto fixado no topo central */
+.banner-texto-topo {
+   position: absolute;
+   top: 10%;
+   left: 50%;
+   transform: translateX(-50%);
+   color: #ffffff;
+   text-align: center;
+   width: 90%;
+   z-index: 2;
+   text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+}
+
+.banner-texto-topo h1 {
+   font-size: 2rem;
+   margin: 5px 0;
+}
+
+/* Peneiras Section */
+.peneiras {
+    padding: 40px 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.peneiras h2 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.peneiras h2 span {
+    color: #00bfff;
+}
+
+/* Container do slider das peneiras */
+.peneiras-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Cards das peneiras */
+.sport-cards {
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    max-width: 900px;
+}
+
+/* Cada card (âncora com imagem) */
+.sport-cards a {
+    display: block;
+    flex: 0 0 auto;
+}
+
+.sport-cards img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+}
+
+/* Botões das setas dentro da seção peneiras */
+.peneiras-slider .slider-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: relative;
+    z-index: 5;
+    user-select: none;
+}
+
+/* Margens para afastar as setas dos cards */
+.peneiras-slider .arrow-left {
+    margin-right: 15px;
+}
+
+.peneiras-slider .arrow-right {
+    margin-left: 15px;
+}
+
+.peneiras-slider .slider-arrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Inscrição Section */
+.inscricao {
+    display: flex;
+    gap: 120px;
+    justify-content: center;
+    margin-top: 40px;
+    padding: 5px;
+}
+
+.inscricao a img {
+    width: 550px;
+    height: auto;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(to right, #17328C, #091138, #17328C);
+    width: 100%;
+    height: 160px;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-info h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer-info p {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.footer-info a {
+    color: white;
+}
+
+.footer-info span {
+    color: #00bfff;
+}
+
+.footer-contact a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-social h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer-social span {
+    color: #00bfff;
+}
+
+.social-links1 a {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.social-links2 a {
+    margin-right: 1px;
+}

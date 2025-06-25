@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalhes do Time</title>
+  <link rel="stylesheet" href="volei.css" />
+</head>
+<header>
+            <nav class="main-nav">
+                <a href="index.html">
+                <div class="logo">
+                    <img src="Imagens/logo PA - branco.png.png" height="40px">
+                </div>
+              </a>
+                <ul class="main-menu">
+                    <li><a href="#">Peneiras Abertas</a></li>
+                    <li><a href="sobrenos.html">Sobre Nós</a></li>
+                    <li><a href="parceiros.html">Parceiros</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#" aria-label="Perfil de usuário"><img src="imagens/user.png" height="40px"></a>
+                </div>
+            </nav>
+        </header>
+<body>
+  <h1 id="produto-nome">Nome do Time</h1>
+<button class="voltar" onclick="voltar()">←Voltar</button>
+
+<h2 class="titulo-peneiras">Peneiras Disponíveis</h2>
+  <div class="peneiras">
+    <div class="card-peneira indisponivel">
+      <p>Atletas nascidos em 2008 a 2010</p>
+      <p>Data: 00/00</p>
+      <p>Local: xxxxxxxxxxxxx</p>
+      <span class="status">Indisponível</span>
+    </div>
+    <div class="card-peneira disponivel">
+      <p>Atletas nascidos em 2010 a 2012</p>
+      <p>Data: 00/00</p>
+      <p>Local: xxxxxxxxxxxxx</p>
+      <span class="status">Disponível</span>
+    </div>
+    <div class="card-peneira disponivel">
+      <p>Atletas nascidos em 2012 a 2014</p>
+      <p>Data: 00/00</p>
+      <p>Local: xxxxxxxxxxxxx</p>
+      <span class="status">Disponível</span>
+    </div>
+  </div>
+
+  <div class="detalhes-time">
+    <div class="info-time">
+      <p id="produto-descricao"></p>
+      <ul class="info-lista">
+        <li><strong>Cidade:</strong> <span id="req-cidade"></span></li>
+        <li><strong>Ginásio:</strong> <span id="req-estadio"></span></li>
+        <li><strong>Torcida:</strong> <span id="req-torcida"></span></li>
+        <li><strong>Cores:</strong> <span id="req-cores"></span></li>
+        <li><strong>Títulos:</strong> <span id="req-titulos"></span></li>
+      </ul>
+    </div>
+
+    <div class="imagem-time">
+      <img id="produto-imagem" src="" alt="Imagem do time" />
+    </div>
+  </div>
+
+  <footer>
+        <div class="container">
+            <div class="footer-content">
+                <section class="footer-info">
+                    <h4>Informações <span>institucionais</span>:</h4>
+                    <nav>
+                        <p><a href="sobrenos.html">Sobre nós</a></p>
+                        <p><a href="parceiros.html">Parceiros</a></p>
+                    </nav>
+                </section>
+                <section class="footer-contact">
+                    <h4>Contato:</h4>
+                    <address>
+                        <a href="mailto:atletacampeao@gmail.com">E-mail: atletacampeao@gmail.com</a>
+                        <a href="tel:0000000000"><img src="imagens/whatsap.png" height="30px">: (00) 00000-0000</a>
+                        <a href="tel:00000000"><img src="imagens/phone.png" height="30px">: 0000-0000</a>
+                    </address>
+                </section>
+                <section class="footer-social">
+                    <h4>Redes <span>sociais</span>:</h4>
+                    <nav class="social-links1">
+                        <a href="#" aria-label="Instagram"><img src="imagens/instagram.png"></a>
+                        <a href="#" aria-label="WhatsApp"><img src="imagens/whatsap.png"></a>
+                    </nav>
+                    <nav class="social-links2">
+                        <a href="#" aria-label="Facebook"><img src="imagens/facebook.png"></a>
+                        <a href="#" aria-label="TikTok"><img src="imagens/tiktok.png"></a>
+                    </nav>
+                </section>
+            </div>
+        </div>
+    </footer>
+  <script src="volei.js"></script>
+</body>
+</html>
