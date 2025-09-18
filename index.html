@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="home.css">
     <title>Home</title>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FDKV9DMRLM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FDKV9DMRLM');
+</script>
 <body>
     <!-- Header com navegação -->
     <header>
@@ -35,8 +44,8 @@
     </div>
 
 </div>
-    
-    <section class="content-section">
+    <main>
+        <section class="content-section">
         <div class="container">
             <main>
                  <!-- Seção de Peneiras -->
@@ -58,6 +67,7 @@
             </main>
         </div>
     </section>
+    </main>
 <!-- Rodapé -->
 <footer>
     <div class="footer-content">
@@ -120,7 +130,6 @@
     clearInterval(bannerInterval);
     bannerInterval = setInterval(showNextBanner, 4000);
   }
-
 
 </script>
 </html>
