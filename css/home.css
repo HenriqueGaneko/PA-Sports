@@ -275,6 +275,10 @@ header {
     height: auto;
 }
 
+.bannerA4 {
+    margin-left: 500px;
+}
+
 /* Footer */
 footer {
     background: linear-gradient(to right, #17328C, #091138, #17328C);

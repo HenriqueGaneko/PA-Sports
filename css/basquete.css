@@ -16,7 +16,7 @@
 
 body {
   position: relative;
-  background-image: url(imagens/basqueteBackground.jpeg);
+  background-image: url(../imagens/basqueteBackground.jpeg);
   background-size: cover;
   background-position: center;
   color: white;
