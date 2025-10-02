@@ -4,7 +4,7 @@ const cardTimes = [
     title: "Sada Cruzeiro",
     description: "Sada Cruzeiro Vôlei, um dos clubes mais vitoriosos do vôlei brasileiro e mundial.",
     price: "R$ 25 milhões",
-    imageUrl: "imagens/SadaCruzeiro2021.png",
+    imageUrl: "../imagens/SadaCruzeiro2021.png",
     requisitos: {
       cidade: "Contagem, MG",
       estadio: "Ginásio do Riacho",
@@ -19,7 +19,7 @@ const cardTimes = [
     title: "Sesi Bauru",
     description: "Sesi Bauru, tradicional equipe paulista com grande destaque na Superliga Feminina.",
     price: "R$ 15 milhões",
-    imageUrl: "imagens/SesiSaoPaulo.png",
+    imageUrl: "../imagens/SesiSaoPaulo.png",
     requisitos: {
       cidade: "Bauru, SP",
       estadio: "Ginásio Panela de Pressão",
@@ -34,7 +34,7 @@ const cardTimes = [
     title: "Vôlei Renata",
     description: "Vôlei Renata, equipe sediada em Campinas que se destaca no cenário nacional masculino.",
     price: "R$ 10 milhões",
-    imageUrl: "imagens/VoleiRenata.png",
+    imageUrl: "../imagens/VoleiRenata.png",
     requisitos: {
       cidade: "Campinas, SP",
       estadio: "Ginásio Taquaral",

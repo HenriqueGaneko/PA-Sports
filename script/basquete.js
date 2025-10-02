@@ -4,7 +4,7 @@ const cardTimes = [
     title: "Flamengo Basquete",
     description: "Um dos times mais vitoriosos do Brasil, com forte presença nacional e internacional.",
     price: "R$ 12 milhões",
-    imageUrl: "imagens/LogoFlamengo.png",
+    imageUrl: "../imagens/LogoFlamengo.png",
     requisitos: {
       cidade: "Rio de Janeiro, RJ",
       estadio: "Ginásio do Maracanãzinho",
@@ -19,7 +19,7 @@ const cardTimes = [
     title: "Franca Basquete",
     description: "Tradição no basquete nacional, com diversas conquistas no NBB e estaduais.",
     price: "R$ 10 milhões",
-    imageUrl: "imagens/LogoFranca.png",
+    imageUrl: "../imagens/LogoFranca.png",
     requisitos: {
       cidade: "Franca, SP",
       estadio: "Ginásio Pedrocão",
@@ -34,7 +34,7 @@ const cardTimes = [
     title: "Bauru Basket",
     description: "Equipe tradicional com grande impacto na formação de talentos.",
     price: "R$ 8 milhões",
-    imageUrl: "imagens/bauruBasquete.png",
+    imageUrl: "../imagens/bauruBasquete.png",
     requisitos: {
       cidade: "Bauru, SP",
       estadio: "Ginásio Panela de Pressão",

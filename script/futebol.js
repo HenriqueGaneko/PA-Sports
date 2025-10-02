@@ -4,7 +4,7 @@ const cardTimes = [
     title: "São Paulo",
     description: "São Paulo Futebol Clube, fundado em 25 de janeiro de 1930",
     price: "R$ 1,1 bilhão",
-    imageUrl: "imagens/São_Paulo_Futebol_Clube.png",
+    imageUrl: "../imagens/São_Paulo_Futebol_Clube.png",
     requisitos: {
       cidade: "São Paulo, SP",
       estadio: "Morumbis",
@@ -19,7 +19,7 @@ const cardTimes = [
     title: "Palmeiras",
     description: "Sociedade Esportiva Palmeiras, tradicional clube paulista fundado em 1914.",
     price: "R$ 1.8 bilhões",
-    imageUrl: "imagens/palmeiras.png",
+    imageUrl: "../imagens/palmeiras.png",
     requisitos: {
       cidade: "São Paulo, SP",
       estadio: "Allianz Parque",
@@ -34,7 +34,7 @@ const cardTimes = [
     title: "Corinthians",
     description: "Sport Club Corinthians Paulista, fundado em 1910, conhecido como 'Timão'.",
     price: "R$ 1.6 bilhões",
-    imageUrl: "imagens/corinthians.png",
+    imageUrl: "../imagens/corinthians.png",
     requisitos: {
       cidade: "São Paulo, SP",
       estadio: "Neo Química Arena",
