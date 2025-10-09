@@ -16,123 +16,550 @@
   gtag('config', 'G-FDKV9DMRLM');
 </script>
 <body>
-    <!-- Header com navegação -->
-    <header>
-        <nav class="main-nav">
-            <div class="logo">
-                <img src="imagens/logo PA - branco.png.png" height="40px">
+    <!-- Header Hamburguer para TODOS os dispositivos -->
+<header>
+    <nav class="main-nav">
+        <!-- Container do logo e hamburguer - LADO ESQUERDO -->
+        <div class="nav-left">
+            <!-- Menu Hamburguer -->
+            <div class="hamburger-menu" id="hamburger-menu">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
-            <ul class="main-menu">
-                <li><a href="#">Peneiras Abertas</a></li>
-                <li><a href="html/sobrenos.html">Sobre Nós</a></li>
-                <li><a href="html/parceiros.html">Parceiros</a></li>
-            </ul>
-            <div class="social-icons">
-                <a href="html/Login1.html" aria-label="Perfil de usuário"><img src="imagens/user.png" height="40px"></a>
-            </div>
-        </nav>
-    </header>
-    <div class="banner-carousel">
-        <img src="imagens/banner1.jpg" class="banner active" />
-        <img src="imagens/banner2.jpg" class="banner" />
-        <img src="imagens/banner3.jpg" class="banner" />
-        <img src="imagens/banner4.jpg" class="banner" />
-        <img src="imagens/banner5.jpg" class="banner" />
 
-        <button class="banner-arrow left" onclick="previousBanner()">&#10094;</button>
-        <button class="banner-arrow right" onclick="nextBanner()">&#10095;</button>
-    </div>
+            <!-- Logo -->
+            <div class="logo">
+                <img src="imagens/logo PA - branco.png.png" height="40px" alt="PA Sports">
+            </div>
+        </div>
+
+        <!-- Menu -->
+        <ul class="main-menu" id="main-menu">
+            <li><a href="#">Peneiras Abertas</a></li>
+            <li><a href="sobrenos.html">Sobre Nós</a></li>
+            <li><a href="parceiros.html">Parceiros</a></li>
+        </ul>
+        
+        <!-- Ícone do usuário - LADO DIREITO -->
+        <div class="social-icons">
+            <a href="Login1.html" aria-label="Perfil de usuário">
+                <img src="imagens/user.png" height="40px" alt="Login">
+            </a>
+        </div>
+
+        <!-- Overlay do Menu -->
+        <div class="menu-overlay" id="menu-overlay"></div>
+    </nav>
+</header>
+   <!-- Banner Carousel Moderno -->
 
 </div>
     <main>
+        <section class="banner-section">
+    <div class="banner-carousel">
+        <div class="banner-slide active">
+            <img src="imagens/banner1.jpg" alt="Banner 1">
+            <div class="banner-content">
+                <h2>Peneiras Abertas</h2>
+                <p>Mostre seu talento e seja descoberto</p>
+                <a href="#" class="banner-btn">Saiba Mais</a>
+            </div>
+        </div>
+        
+        <div class="banner-slide">
+            <img src="imagens/banner5.jpg" alt="Banner 2">
+            <div class="banner-content">
+                <h2>Futebol</h2>
+                <p>Seleções em todo o país</p>
+                <a href="futebol.html" class="banner-btn">Ver Peneiras</a>
+            </div>
+        </div>
+        
+        <div class="banner-slide">
+            <img src="imagens/banner2.jpg" alt="Banner 3">
+            <div class="banner-content">
+                <h2>Vôlei</h2>
+                <p>Opportunidades para atletas</p>
+                <a href="volei.html" class="banner-btn">Ver Peneiras</a>
+            </div>
+        </div>
+        
+        <div class="banner-slide">
+            <img src="imagens/banner4.jpg" alt="Banner 4">
+            <div class="banner-content">
+                <h2>Basquete</h2>
+                <p>Mostre suas habilidades</p>
+                <a href="basquete.html" class="banner-btn">Ver Peneiras</a>
+            </div>
+        </div>
+        
+        <div class="banner-slide">
+            <img src="imagens/banner5.jpg" alt="Banner 5">
+            <div class="banner-content">
+                <h2>Seja um Atleta</h2>
+                <p>Transforme seu sonho em realidade</p>
+                <a href="#" class="banner-btn">Inscreva-se</a>
+            </div>
+        </div>
+
+        <div class="banner-slide">
+            <img src="imagens/cena-torneio-dos-jogos-olimpicos-com-atletas-competindo.jpg" alt="Banner 5">
+            <div class="banner-content">
+                <h2>Mostre seu potêncial</h2>
+                <p>Não tenha medo de falhar.  Esse é o caminho para o sucesso</p>
+                <a href="#" class="banner-btn">Inscreva-se</a>
+            </div>
+        </div>
+
+        <div class="banner-slide">
+            <img src="imagens/atleta-masculino-competindo-nos-esportes-paralimpicos.jpg" alt="Banner 5">
+            <div class="banner-content">
+                <h2>Jogue sempre para vencer</h2>
+                <p>No treino e em partidas reais</p>
+                <a href="#" class="banner-btn">Inscreva-se</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controles de Navegação -->
+    <button class="carousel-control prev" aria-label="Banner anterior">
+        <span>❮</span>
+    </button>
+    <button class="carousel-control next" aria-label="Próximo banner">
+        <span>❯</span>
+    </button>
+
+    <!-- Indicadores -->
+    <div class="carousel-indicators">
+        <button class="indicator active" data-slide="0"></button>
+        <button class="indicator" data-slide="1"></button>
+        <button class="indicator" data-slide="2"></button>
+        <button class="indicator" data-slide="3"></button>
+        <button class="indicator" data-slide="4"></button>
+        <button class="indicator" data-slide="5"></button>
+        <button class="indicator" data-slide="6"></button>
+    </div>
+</section>
+
         <section class="content-section">
         <div class="container">
             <main>
-                 <!-- Seção de Peneiras -->
-                 <section class="peneiras">
-                    <h2>PEN<span>EIRAS</span></h2>
+                 <!-- Seção de Peneiras Atualizada -->
+<section class="peneiras">
+    <div class="peneiras-header">
+        <h2>PEN<span>EIRAS</span></h2>
+        <p class="peneiras-subtitle">Encontre peneiras para seu esporte favorito</p>
+    </div>
 
-                    <div class="peneiras-slider">
-                    <button class="slider-arrow arrow-left" aria-label="Categoria anterior">❮</button>
+    <div class="peneiras-container">
+        <button class="slider-arrow arrow-left" aria-label="Esportes anteriores">
+            <span>❮</span>
+        </button>
 
-                    <div class="sport-cards" role="region" aria-label="Categorias de esportes">
-                        <a href="html/futebol.html"><img src="imagens/FutebolIcon.png"></a>
-                        <a href="html/volei.html"><img src="imagens/VoleiIcon.png"></a>
-                        <a href="html/basquete.html"><img src="imagens/BasqueteIcon.png"></a>
-                    </div>
+        <div class="sport-cards-container">
+            <div class="sport-cards-track" id="sport-cards-track">
+                <!-- Card 1 - Futebol -->
+                <div class="sport-card">
+                    <a href="futebol.html" class="sport-card-link">
+                        <div class="sport-card-image">
+                            <img src="imagens/football.png" alt="Futebol">
+                        </div>
+                        <div class="sport-card-content">
+                            <h3>Futebol</h3>
+                            <p>Peneiras profissionais e categorias de base</p>
+                            <span class="sport-count">15 peneiras ativas</span>
+                        </div>
+                    </a>
+                </div>
 
-                    <button class="slider-arrow arrow-right" aria-label="Próxima categoria">❯</button>
-                    </div>
-                </section>
+                <!-- Card 2 - Vôlei -->
+                <div class="sport-card">
+                    <a href="volei.html" class="sport-card-link">
+                        <div class="sport-card-image">
+                            <img src="imagens/volleyball.png" alt="Vôlei">
+                        </div>
+                        <div class="sport-card-content">
+                            <h3>Vôlei</h3>
+                            <p>Seleções para quadra e praia</p>
+                            <span class="sport-count">8 peneiras ativas</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 3 - Basquete -->
+                <div class="sport-card">
+                    <a href="basquete.html" class="sport-card-link">
+                        <div class="sport-card-image">
+                            <img src="imagens/basketball.png" alt="Basquete">
+                        </div>
+                        <div class="sport-card-content">
+                            <h3>Basquete</h3>
+                            <p>Triagens para todas as posições</p>
+                            <span class="sport-count">12 peneiras ativas</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 4 - Futsal -->
+                <div class="sport-card">
+                    <a href="futsal.html" class="sport-card-link">
+                        <div class="sport-card-image">
+                            <img src="imagens/football.png" alt="Futsal">
+                        </div>
+                        <div class="sport-card-content">
+                            <h3>Futsal</h3>
+                            <p>Peneiras para quadra society</p>
+                            <span class="sport-count">6 peneiras ativas</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 5 - Handebol -->
+                <div class="sport-card">
+                    <a href="handebol.html" class="sport-card-link">
+                        <div class="sport-card-image">
+                            <img src="imagens/games.png" alt="Handebol">
+                        </div>
+                        <div class="sport-card-content">
+                            <h3>Handebol</h3>
+                            <p>Seleções para times competitivos</p>
+                            <span class="sport-count">5 peneiras ativas</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 6 - Natação -->
+                <div class="sport-card">
+                    <a href="natacao.html" class="sport-card-link">
+                        <div class="sport-card-image">
+                            <img src="imagens/swimming-championship.png" alt="Natação">
+                        </div>
+                        <div class="sport-card-content">
+                            <h3>Natação</h3>
+                            <p>Testes para equipes de competição</p>
+                            <span class="sport-count">4 peneiras ativas</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 7 - Atletismo -->
+                <div class="sport-card">
+                    <a href="atletismo.html" class="sport-card-link">
+                        <div class="sport-card-image">
+                            <img src="imagens/runner.png" alt="Atletismo">
+                        </div>
+                        <div class="sport-card-content">
+                            <h3>Atletismo</h3>
+                            <p>Seleções para diversas modalidades</p>
+                            <span class="sport-count">3 peneiras ativas</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 8 - Tênis -->
+                <div class="sport-card">
+                    <a href="tenis.html" class="sport-card-link">
+                        <div class="sport-card-image">
+                            <img src="imagens/tennis.png" alt="Tênis">
+                        </div>
+                        <div class="sport-card-content">
+                            <h3>Tênis</h3>
+                            <p>Peneiras para quadras e rankings</p>
+                            <span class="sport-count">7 peneiras ativas</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <button class="slider-arrow arrow-right" aria-label="Próximos esportes">
+            <span>❯</span>
+        </button>
+    </div>
+
+    <div class="carousel-dots" id="carousel-dots">
+        <!-- Os dots serão gerados via JavaScript -->
+    </div>
+</section>
             </main>
         </div>
-        <section class="bannerA4">
-            <img src="cartazA4/cartaz PA QR.png" alt="cartaz A4">
-        </section>
     </section>
     </main>
 <!-- Rodapé -->
-<footer>
-    <div class="footer-content">
-        <section class="footer-info">
-            <h4>Informações <span>institucionais</span>:</h4>
-            <nav>
-                <p><a href="html/sobrenos.html">Sobre nós</a></p>
-                <p><a href="html/parceiros.html">Parceiros</a></p>
-            </nav>
-        </section>
-        <section class="footer-contact">
-            <h4>Contato:</h4>
-            <address>
-                <a href="mailto:atletacampeao@gmail.com">E-mail: atletacampeao@gmail.com</a>
-                <a href="tel:0000000000"><img src="imagens/whatsap.png" height="30px">: (00) 00000-0000</a>
-                <a href="tel:00000000"><img src="imagens/phone.png" height="30px">: 0000-0000</a>
-            </address>
-        </section>
-        <section class="footer-social">
-            <h4>Redes <span>sociais</span>:</h4>
-            <nav class="social-links1">
-                <a href="#" aria-label="Instagram"><img src="imagens/instagram.png"></a>
-                <a href="#" aria-label="WhatsApp"><img src="imagens/whatsap.png"></a>
-            </nav>
-            <nav class="social-links2">
-                <a href="#" aria-label="Facebook"><img src="imagens/facebook.png"></a>
-                <a href="#" aria-label="TikTok"><img src="imagens/tiktok.png"></a>
-            </nav>
-        </section>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Informações <span>institucionais</span></h4>
+      <ul>
+        <li><a href="sobrenos.html">Sobre nós</a></li>
+        <li><a href="parceiros.html">Parceiros</a></li>
+      </ul>
     </div>
+
+    <div class="footer-column">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="mailto:atletacampeao@gmail.com">📧 atletacampeao@gmail.com</a></li>
+        <li><a href="tel:0000000000"><img src="imagens/whatsap.png" alt="WhatsApp"> (00) 00000-0000</a></li>
+        <li><a href="tel:00000000"><img src="imagens/phone.png" alt="Telefone"> 0000-0000</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Redes <span>sociais</span></h4>
+      <div class="social-icons-footer">
+        <a href="#"><img src="imagens/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="imagens/whatsap.png" alt="WhatsApp"></a>
+        <a href="#"><img src="imagens/facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="imagens/tiktok.png" alt="TikTok"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 PA-Sports. Todos os direitos reservados.</p>
+  </div>
 </footer>
 </body>
 <script>
+
+    // Header Hamburguer
+
+    // Header Hamburguer para TODOS os dispositivos
+class HamburguerMenu {
+    constructor() {
+        this.hamburgerBtn = document.getElementById('hamburger-menu');
+        this.mainMenu = document.getElementById('main-menu');
+        this.menuOverlay = document.getElementById('menu-overlay');
+        this.body = document.body;
+        
+        this.init();
+    }
     
-      const banners = document.querySelectorAll('.banner-carousel .banner');
-  let current = 0;
-  let bannerInterval = setInterval(showNextBanner, 4000);
+    init() {
+        // Event listener para o botão hamburguer
+        this.hamburgerBtn.addEventListener('click', () => this.toggleMenu());
+        
+        // Event listener para o overlay
+        this.menuOverlay.addEventListener('click', () => this.closeMenu());
+        
+        // Event listener para os links do menu
+        const menuLinks = document.querySelectorAll('.main-menu a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => this.closeMenu());
+        });
+        
+        // Fechar menu com ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.closeMenu();
+            }
+        });
+    }
+    
+    toggleMenu() {
+        this.hamburgerBtn.classList.toggle('active');
+        this.mainMenu.classList.toggle('active');
+        this.menuOverlay.classList.toggle('active');
+        this.body.style.overflow = this.mainMenu.classList.contains('active') ? 'hidden' : '';
+    }
+    
+    openMenu() {
+        this.hamburgerBtn.classList.add('active');
+        this.mainMenu.classList.add('active');
+        this.menuOverlay.classList.add('active');
+        this.body.style.overflow = 'hidden';
+    }
+    
+    closeMenu() {
+        this.hamburgerBtn.classList.remove('active');
+        this.mainMenu.classList.remove('active');
+        this.menuOverlay.classList.remove('active');
+        this.body.style.overflow = '';
+    }
+}
 
-  function showBanner(index) {
-    banners[current].classList.remove('active');
-    current = (index + banners.length) % banners.length;
-    banners[current].classList.add('active');
-  }
+// Inicializar quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', () => {
+    new HamburguerMenu();
+});
 
-  function showNextBanner() {
-    showBanner(current + 1);
-  }
+    // Carousel Banner
+class BannerCarousel {
+    constructor() {
+        this.slides = document.querySelectorAll('.banner-slide');
+        this.indicators = document.querySelectorAll('.indicator');
+        this.prevBtn = document.querySelector('.carousel-control.prev');
+        this.nextBtn = document.querySelector('.carousel-control.next');
+        this.currentSlide = 0;
+        this.autoPlayInterval = null;
+        
+        this.init();
+    }
+    
+    init() {
+        // Event listeners
+        this.prevBtn.addEventListener('click', () => this.prevSlide());
+        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        
+        // Indicadores
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Auto play
+        this.startAutoPlay();
+        
+        // Pausar auto play quando hover
+        const carousel = document.querySelector('.banner-section');
+        carousel.addEventListener('mouseenter', () => this.stopAutoPlay());
+        carousel.addEventListener('mouseleave', () => this.startAutoPlay());
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') this.prevSlide();
+            if (e.key === 'ArrowRight') this.nextSlide();
+        });
+    }
+    
+    showSlide(index) {
+        // Remove active class de todos os slides e indicadores
+        this.slides.forEach(slide => slide.classList.remove('active'));
+        this.indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        // Atualiza slide atual
+        this.currentSlide = (index + this.slides.length) % this.slides.length;
+        
+        // Adiciona active class ao slide e indicador atual
+        this.slides[this.currentSlide].classList.add('active');
+        this.indicators[this.currentSlide].classList.add('active');
+    }
+    
+    nextSlide() {
+        this.showSlide(this.currentSlide + 1);
+    }
+    
+    prevSlide() {
+        this.showSlide(this.currentSlide - 1);
+    }
+    
+    goToSlide(index) {
+        this.showSlide(index);
+    }
+    
+    startAutoPlay() {
+        this.stopAutoPlay();
+        this.autoPlayInterval = setInterval(() => this.nextSlide(), 5000);
+    }
+    
+    stopAutoPlay() {
+        if (this.autoPlayInterval) {
+            clearInterval(this.autoPlayInterval);
+        }
+    }
+}
 
-  function previousBanner() {
-    showBanner(current - 1);
-    resetBannerTimer();
-  }
+// Inicializar carousel quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', () => {
+    new BannerCarousel();
+});
 
-  function nextBanner() {
-    showNextBanner();
-    resetBannerTimer();
-  }
+    // Carousel das Peneiras
+class PeneirasCarousel {
+    constructor() {
+        this.track = document.getElementById('sport-cards-track');
+        this.cards = document.querySelectorAll('.sport-card');
+        this.prevBtn = document.querySelector('.arrow-left');
+        this.nextBtn = document.querySelector('.arrow-right');
+        this.dotsContainer = document.getElementById('carousel-dots');
+        
+        this.currentPosition = 0;
+        this.cardWidth = 280 + 25; // width + gap
+        this.visibleCards = this.calculateVisibleCards();
+        this.maxPosition = (this.cards.length - this.visibleCards) * this.cardWidth;
+        
+        this.init();
+    }
+    
+    calculateVisibleCards() {
+        const containerWidth = document.querySelector('.sport-cards-container').offsetWidth;
+        return Math.floor(containerWidth / this.cardWidth);
+    }
+    
+    init() {
+        // Criar dots indicadores
+        this.createDots();
+        
+        // Event listeners
+        this.prevBtn.addEventListener('click', () => this.prev());
+        this.nextBtn.addEventListener('click', () => this.next());
+        
+        // Atualizar na resize da janela
+        window.addEventListener('resize', () => {
+            this.visibleCards = this.calculateVisibleCards();
+            this.maxPosition = (this.cards.length - this.visibleCards) * this.cardWidth;
+            this.updatePosition(0); // Reset para primeira posição
+        });
+        
+        // Atualizar controles
+        this.updateControls();
+    }
+    
+    createDots() {
+        const totalDots = Math.ceil(this.cards.length / this.visibleCards);
+        
+        for (let i = 0; i < totalDots; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('aria-label', `Ir para grupo ${i + 1}`);
+            dot.addEventListener('click', () => this.goToSlide(i));
+            this.dotsContainer.appendChild(dot);
+        }
+    }
+    
+    updateDots() {
+        const currentDot = Math.floor(this.currentPosition / (this.visibleCards * this.cardWidth));
+        const dots = document.querySelectorAll('.carousel-dot');
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentDot);
+        });
+    }
+    
+    updatePosition(position) {
+        this.currentPosition = Math.max(0, Math.min(position, this.maxPosition));
+        this.track.style.transform = `translateX(-${this.currentPosition}px)`;
+        this.updateControls();
+        this.updateDots();
+    }
+    
+    prev() {
+        this.updatePosition(this.currentPosition - (this.visibleCards * this.cardWidth));
+    }
+    
+    next() {
+        this.updatePosition(this.currentPosition + (this.visibleCards * this.cardWidth));
+    }
+    
+    goToSlide(slideIndex) {
+        const position = slideIndex * (this.visibleCards * this.cardWidth);
+        this.updatePosition(position);
+    }
+    
+    updateControls() {
+        this.prevBtn.disabled = this.currentPosition <= 0;
+        this.nextBtn.disabled = this.currentPosition >= this.maxPosition;
+    }
+}
 
-  function resetBannerTimer() {
-    clearInterval(bannerInterval);
-    bannerInterval = setInterval(showNextBanner, 4000);
-  }
+// Inicializar quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', () => {
+    new PeneirasCarousel();
+});
 
 </script>
 </html>
