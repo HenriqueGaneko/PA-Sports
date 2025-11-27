@@ -1,0 +1,274 @@
+/* ===== RESPONSIVE STYLES - PA SPORTS ===== */
+/* Mobile First Approach */
+
+/* Tablets (1024px para baixo) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    header {
+        padding: 15px 20px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .services-grid,
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .about-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .about-text,
+    .about-image {
+        width: 100%;
+    }
+}
+
+/* Tablets Pequenos e Mobile Grande (768px para baixo) */
+@media (max-width: 768px) {
+    /* Header e Navegação */
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    
+    .logo {
+        text-align: center;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    nav ul li a {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 80px 0 60px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+    
+    /* Serviços */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .service-card {
+        padding: 20px;
+    }
+    
+    /* Sobre */
+    .about {
+        padding: 50px 0;
+    }
+    
+    .about-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    /* Produtos */
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .product-card {
+        padding: 15px;
+    }
+    
+    /* Contato */
+    .contact-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .contact-info,
+    .contact-form {
+        width: 100%;
+    }
+    
+    .contact-form form {
+        padding: 20px;
+    }
+    
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .footer-section {
+        width: 100%;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Mobile Pequeno (480px para baixo) */
+@media (max-width: 480px) {
+    /* Header */
+    header {
+        padding: 10px 15px;
+    }
+    
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+    
+    nav ul {
+        gap: 5px;
+    }
+    
+    nav ul li a {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 60px 0 40px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+    
+    /* Seções Gerais */
+    section {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+    
+    /* Cards */
+    .service-card,
+    .product-card {
+        padding: 15px;
+    }
+    
+    .service-card h3,
+    .product-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    /* Formulário */
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    input, textarea, select {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    button[type="submit"] {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+    
+    /* Footer */
+    .footer-bottom {
+        padding: 15px 0;
+        font-size: 0.8rem;
+    }
+}
+
+/* Ajustes para telas muito pequenas (360px para baixo) */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .cta-button {
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav ul li a {
+        padding: 5px 8px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Ajustes para orientação landscape em mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding: 40px 0;
+        min-height: auto;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Impressão */
+@media print {
+    header,
+    footer,
+    .cta-button {
+        display: none;
+    }
+    
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+    
+    section {
+        padding: 20px 0;
+        page-break-inside: avoid;
+    }
+}
