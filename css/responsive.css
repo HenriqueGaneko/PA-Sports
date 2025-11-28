@@ -1,186 +1,63 @@
-/* ===== RESPONSIVE STYLES - PA SPORTS ===== */
-/* Ajustes Seguros sem Quebrar Layout */
+/* Reset mais suave */
+* {
+    box-sizing: border-box;
+}
 
-/* Tablets (1024px para baixo) */
+/* Tablet */
 @media (max-width: 1024px) {
-    .banner-content h2 {
-        font-size: 2rem;
+    .header-list-ul {
+        gap: 20px;
     }
     
-    .banner-content p {
-        font-size: 1.1rem;
+    .header-list-item a {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+    
+    .main-content {
+        padding: 20px;
     }
 }
 
-/* Tablets Pequenos e Mobile Grande (768px para baixo) */
+/* Mobile */
 @media (max-width: 768px) {
-    /* Header - Ajustes Seguros */
-    .main-nav {
-        padding: 0 15px;
-    }
-    
-    .logo img {
-        height: 35px;
-    }
-    
-    .social-icons img {
-        height: 35px;
-    }
-    
-    /* Menu Hamburguer - Correção */
-    .hamburger-menu {
-        display: block;
-        z-index: 1001;
-    }
-    
-    .main-menu {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: rgba(26, 26, 26, 0.95);
+    .header-content {
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
+        padding: 10px;
     }
     
-    .main-menu.active {
-        display: flex;
-    }
-    
-    .main-menu li {
-        margin: 1.5rem 0;
-    }
-    
-    .main-menu li a {
-        font-size: 1.2rem;
-        color: white;
-    }
-    
-    /* Banner - Ajustes Seguros */
-    .banner-section {
-        height: 300px;
-    }
-    
-    .banner-content {
-        padding: 1.5rem;
-    }
-    
-    .banner-content h2 {
-        font-size: 1.5rem;
-    }
-    
-    .banner-content p {
-        font-size: 0.9rem;
-    }
-    
-    .banner-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-    
-    /* Sport Cards - Ajustes Seguros */
-    .sport-cards-container {
-        margin: 0 20px;
-    }
-    
-    .sport-card {
-        min-width: 250px;
-    }
-}
-
-/* Mobile Pequeno (480px para baixo) */
-@media (max-width: 480px) {
-    /* Header */
-    .main-nav {
-        padding: 0 10px;
+    .header-list-ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
     }
     
     .logo img {
-        height: 30px;
+        max-width: 190px;
     }
     
-    .social-icons img {
-        height: 30px;
+    .main-content {
+        padding: 15px;
     }
     
-    /* Banner */
-    .banner-section {
-        height: 250px;
-    }
-    
-    .banner-content {
-        padding: 1rem;
-    }
-    
-    .banner-content h2 {
-        font-size: 1.3rem;
-    }
-    
-    .banner-content p {
-        font-size: 0.8rem;
-    }
-    
-    /* Esconder controles em mobile muito pequeno */
-    .carousel-control {
-        display: none;
-    }
-    
-    /* Sport Cards */
-    .sport-cards-container {
-        margin: 0 10px;
-    }
-    
-    .sport-card {
-        min-width: 220px;
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
     }
 }
 
-/* Mobile Muito Pequeno (360px para baixo) */
-@media (max-width: 360px) {
-    .banner-section {
-        height: 200px;
+/* Mobile Pequeno */
+@media (max-width: 480px) {
+    .header-list-item a {
+        font-size: 12px;
+        padding: 6px 10px;
     }
     
-    .banner-content h2 {
-        font-size: 1.1rem;
+    .logo img {
+        max-width: 100px;
     }
     
-    .sport-card {
-        min-width: 200px;
-    }
-}
-
-/* Overlay para menu mobile */
-.menu-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
-
-.menu-overlay.active {
-    display: block;
-}
-
-/* Garantir que o menu hamburguer funcione em mobile */
-@media (min-width: 769px) {
-    .hamburger-menu {
-        display: none;
-    }
-    
-    .main-menu {
-        display: flex !important;
-    }
-    
-    .menu-overlay {
-        display: none !important;
+    .product-grid {
+        grid-template-columns: 1fr;
     }
 }
