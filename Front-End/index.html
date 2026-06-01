@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PA - Sports</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
+<nav>
+  <a class="nav-logo" href="#" data-page="home"><span>PA -</span>Sports</a>
+  <ul class="nav-links">
+    <li><a href="#" data-page="home" class="active">Home</a></li>
+    <li><a href="#" data-page="esportes">Esportes</a></li>
+    <li><a href="#" data-page="peneiras">Peneiras</a></li>
+    <li><a href="#" data-page="parceiros">Parceiros</a></li>
+    <li><a href="#" data-page="sobre">Sobre Nós</a></li>
+    <li><a href="#" data-page="login" class="nav-cta">Entrar</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════════════════════════ PÁGINAS ═══════════════════════════════ -->
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <!-- incluído via include externo -->
+</div>
+
+<!-- ESPORTES -->
+<div id="page-esportes" class="page">
+</div>
+
+<!-- SPORT DETALHE -->
+<div id="page-sport" class="page">
+  <div class="sport-page-hero" id="sport-page-hero"></div>
+  <section>
+    <div class="container">
+      <div class="section-header" style="text-align:left">
+        <span class="section-tag">Seletivas</span>
+        <h2 class="section-title">Peneiras <span>Abertas</span></h2>
+      </div>
+      <div class="peneiras-grid" id="sport-peneiras"></div>
+    </div>
+  </section>
+</div>
+
+<!-- PENEIRAS -->
+<div id="page-peneiras" class="page">
+</div>
+
+<!-- LOGIN / CADASTRO -->
+<div id="page-login" class="page">
+</div>
+
+<!-- PERFIL -->
+<div id="page-perfil" class="page">
+  <div id="perfil-wrap"></div>
+</div>
+
+<!-- PARCEIROS -->
+<div id="page-parceiros" class="page">
+</div>
+
+<!-- SOBRE NÓS -->
+<div id="page-sobre" class="page">
+</div>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo"><span>PA-</span>Sports</div>
+      <p>A maior plataforma de peneiras esportivas do Brasil. Conectando talentos aos melhores clubes e equipes do país.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Esportes</h4>
+      <ul>
+        <li><a data-page="sport" data-sport="futebol">Futebol</a></li>
+        <li><a data-page="sport" data-sport="basquete">Basquete</a></li>
+        <li><a data-page="sport" data-sport="volei">Vôlei</a></li>
+        <li><a data-page="sport" data-sport="natacao">Natação</a></li>
+        <li><a data-page="sport" data-sport="tenis">Tênis</a></li>
+        <li><a data-page="sport" data-sport="atletismo">Atletismo</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Plataforma</h4>
+      <ul>
+        <li><a data-page="peneiras">Todas as Peneiras</a></li>
+        <li><a data-page="parceiros">Parceiros</a></li>
+        <li><a data-page="sobre">Sobre Nós</a></li>
+        <li><a data-page="login">Criar Conta</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="#">contato@scoutbr.com.br</a></li>
+        <li><a href="#">(11) 9999-0000</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+     © <script>document.write(new Date().getFullYear())</script>
+    PA-Sports · Todos os direitos reservados
+    <p>Feito para o esporte brasileiro</p>
+  </div>
+</footer>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<!-- ═══════════════════════════════ SCRIPTS ═══════════════════════════════ -->
+<script src="assets/js/data.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="pages/home.js"></script>
+<script src="pages/esportes.js"></script>
+<script src="pages/peneiras.js"></script>
+<script src="pages/login.js"></script>
+<script src="pages/parceiros.js"></script>
+<script src="pages/sobre.js"></script>
+<script src="assets/js/pages.js"></script>
+
+</body>
+</html>
