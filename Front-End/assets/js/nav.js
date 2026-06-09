@@ -1,12 +1,13 @@
-// ─── ESTADO GLOBAL ───
+// ─── ESTADO GLOBAL ───────────────────────────────────────────
 const state = {
   currentPage: 'home',
   currentSport: null,
   user: null,
-  authMode: 'login'
+  authMode: 'login',
+  inscricoes: []
 };
 
-// ─── NAVEGAÇÃO ───
+// ─── NAVEGAÇÃO ───────────────────────────────────────────────
 function navigate(page, extra) {
   state.currentPage = page;
   if (extra) state.currentSport = extra;
@@ -23,24 +24,24 @@ function navigate(page, extra) {
     a.classList.toggle('active', a.dataset.page === page);
   });
 
-  if (page === 'sport') renderSportPage(state.currentSport);
-  if (page === 'peneiras') renderPeneiras();
-  if (page === 'perfil') renderPerfil();
+  if (page === 'sport')    renderSportPage(state.currentSport);
+  if (page === 'peneiras') carregarPeneiras();   // busca da API
+  if (page === 'perfil')   renderPerfil();
 
   // fechar menu mobile
   document.querySelector('.nav-links').classList.remove('open');
 }
 
-// ─── HAMBURGER ───
+// ─── HAMBURGER ───────────────────────────────────────────────
 document.querySelector('.hamburger').addEventListener('click', () => {
   document.querySelector('.nav-links').classList.toggle('open');
 });
 
-// ─── NAV LINKS ───
+// ─── NAV LINKS ───────────────────────────────────────────────
 document.querySelectorAll('[data-page]').forEach(el => {
   el.addEventListener('click', (e) => {
     e.preventDefault();
-    const page = el.dataset.page;
+    const page  = el.dataset.page;
     const sport = el.dataset.sport || null;
     navigate(page, sport);
   });

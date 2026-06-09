@@ -74,29 +74,54 @@
     </a>
   `).join('');
 
-  // Renderiza peneiras em destaque (só abertas, max 3)
+  // Busca peneiras abertas da API para a seção em destaque (max 3)
   const homePeneiras = document.getElementById('home-peneiras');
-  const destaque = PENEIRAS.filter(p => p.status === 'aberta').slice(0, 3);
-  homePeneiras.innerHTML = destaque.map(p => `
-    <div class="peneira-card">
-      <div class="peneira-header">
-        <span class="peneira-sport"><span class="ico">${p.icon}</span>${p.sport.charAt(0).toUpperCase() + p.sport.slice(1)}</span>
-        <span class="status-badge status-${p.status}">Aberta</span>
-      </div>
-      <div class="peneira-body">
-        <h3 class="peneira-title">${p.titulo}</h3>
-        <div class="peneira-info">
-          <div class="info-row"><span class="ico">📍</span>${p.local}</div>
-          <div class="info-row"><span class="ico">📅</span>${p.data} — ${p.hora}</div>
-          <div class="info-row"><span class="ico">👤</span>${p.idade}</div>
+  homePeneiras.innerHTML = `<p style="color:var(--branco-muted);text-align:center;grid-column:1/-1;padding:2rem">Carregando peneiras...</p>`;
+
+  fetch('/peneiras')
+    .then(r => r.json())
+    .then(json => {
+      const todas = json.data || json;
+      const abertas = Array.isArray(todas)
+        ? todas.filter(p => !p.status || p.status === 'aberta').slice(0, 3)
+        : [];
+
+      if (abertas.length === 0) {
+        homePeneiras.innerHTML = `<p style="color:var(--branco-muted);text-align:center;grid-column:1/-1;padding:2rem">Nenhuma peneira aberta no momento.</p>`;
+        return;
+      }
+
+      const iconePorEsporte = nome => {
+        const mapa = { futebol:'⚽', basquete:'🏀', volei:'🏐', natacao:'🏊', natação:'🏊', tenis:'🎾', atletismo:'🏃' };
+        return mapa[(nome||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')] || '🏅';
+      };
+
+      homePeneiras.innerHTML = abertas.map(p => `
+        <div class="peneira-card">
+          <div class="peneira-header">
+            <span class="peneira-sport">
+              <span class="ico">${iconePorEsporte(p.nome_esporte)}</span>${p.nome_esporte || ''}
+            </span>
+            <span class="status-badge status-aberta">Aberta</span>
+          </div>
+          <div class="peneira-body">
+            <h3 class="peneira-title">${p.titulo}</h3>
+            <div class="peneira-info">
+              <div class="info-row"><span class="ico">🏢</span>${p.nome_instituicao || '—'}</div>
+              <div class="info-row"><span class="ico">📍</span>${p.localizacao || '—'}</div>
+              <div class="info-row"><span class="ico">📅</span>${formatarData(p.data_peneira)}</div>
+            </div>
+          </div>
+          <div class="peneira-footer">
+            <span class="vagas"><strong>${p.vagas}</strong> vagas</span>
+            <button class="btn btn-primary" style="font-size:0.78rem;padding:0.5rem 1rem" onclick="inscrever(${p.id_peneira})">Inscrever-se</button>
+          </div>
         </div>
-      </div>
-      <div class="peneira-footer">
-        <span class="vagas"><strong>${p.vagas}</strong> vagas</span>
-        <button class="btn btn-primary" style="font-size:0.78rem;padding:0.5rem 1rem" onclick="inscrever(${p.id})">Inscrever-se</button>
-      </div>
-    </div>
-  `).join('');
+      `).join('');
+    })
+    .catch(() => {
+      homePeneiras.innerHTML = `<p style="color:var(--branco-muted);text-align:center;grid-column:1/-1;padding:2rem">Erro ao carregar peneiras.</p>`;
+    });
 
   // Reativa os links da home
   page.querySelectorAll('[data-page]').forEach(el => {

@@ -49,7 +49,7 @@
         <form id="cadastro-form" style="display:none">
           <div class="form-group">
             <label>Nome completo *</label>
-            <input type="text" id="cad-nome" placeholder="João da Silva" required>
+            <input type="text" id="cad-nome" placeholder="User" required>
           </div>
           <div class="form-group">
             <label>Email *</label>
@@ -64,6 +64,10 @@
               <label>Cidade *</label>
               <input type="text" id="cad-cidade" placeholder="São Paulo - SP" required>
             </div>
+            <div class="form-group">
+            <label>Telefone *</label>
+            <input type="telefone" id="cad-telefone" placeholder="00 00000-0000" required>
+          </div>
           </div>
           <div class="form-row">
             <div class="form-group">
@@ -111,3 +115,8 @@ window.switchAuth = function(mode) {
     tabLogin.style.color = 'var(--branco-muted)';
   }
 };
+
+// ─── LISTENERS DE SUBMIT ─────────────────────────────────────
+// Ficam aqui pois o HTML dos formulários só existe após o IIFE acima renderizá-los
+document.getElementById('login-form').addEventListener('submit', login);
+document.getElementById('cadastro-form').addEventListener('submit', cadastro);

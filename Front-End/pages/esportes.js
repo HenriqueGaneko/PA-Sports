@@ -1,4 +1,5 @@
 // ─── RENDERIZA ESPORTES ───
+
 (function () {
   const page = document.getElementById('page-esportes');
 
