@@ -1,0 +1,35 @@
+# url ou dominio
+@URL = http://localhost
+# Porta do servidor
+@PORT = 3600
+# endpoint ou rota do teste
+@ENDPOINT = inscricoes
+# uri - rota final do teste
+@URI = {{URL}}:{{PORT}}/{{ENDPOINT}}
+
+GET {{URI}}
+###
+GET {{URI}}/1
+
+###
+POST {{URI}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "id_user": "2",
+    "id_peneira": "1",
+    "data_inscricao": "2026-06-01"
+}
+
+###
+PUT {{URI}}/1
+Content-Type: application/json; charset=utf-8
+
+{
+    "id_user": "2",
+    "id_peneira": "4",
+    "data_inscricao": "2026-06-10"
+}
+
+###
+DELETE {{URI}}/1
