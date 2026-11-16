@@ -120,3 +120,14 @@ Após essas etapas, o aplicativo poderá realizar as requisições à API e aces
 <p align="center"><strong>PA-Sports – Conectando talentos a oportunidades!</strong></p>
 
 <p align="center">Projeto desenvolvido como parte de um trabalho acadêmico.</p>
+
+### Estrutura
+```text
+projeto/
+  back/
+  web/
+  mobile/
+  readme.md // readme geral do projeto
+  .gitignore // pastas e arquivos a serem ignorados pelo git
+  .dockerignore // pastas e arquivos a serem ignorador pelo docker
+  ```
