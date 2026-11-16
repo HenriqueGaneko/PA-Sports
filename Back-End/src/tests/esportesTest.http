@@ -15,8 +15,8 @@ GET {{URI}}/5
 POST {{URI}}
 Content-Type: application/json; charset=utf-8
 
-  {   "id_esporte": "7", 
-      "nome_esporte": "Atletismo"
+  {   "id_esporte": "5", 
+      "nome_esporte": "Tênis"
     }
 
 ###
@@ -24,8 +24,8 @@ PUT {{URI}}/4
 Content-Type: application/json; charset=utf-8
 
   {
-      "id_esporte": "7",
-      "nome_esporte": "Atletismo"
+      "id_esporte": "1",
+      "nome_esporte": "Futebol"
     }
 
 

@@ -51,6 +51,7 @@ async function GetByAtleta(id_atleta) {
     SELECT
       inscricoes.id_inscricao,
       inscricoes.data_inscricao,
+      inscricoes.id_peneira,
       peneiras.titulo     AS titulo_peneira,
       peneiras.data_peneira,
       peneiras.localizacao,

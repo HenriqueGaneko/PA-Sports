@@ -16,13 +16,13 @@ POST {{URI}}
 Content-Type: application/json; charset=utf-8
 
   {
-      "id_user": "6",
-      "nome": "Pinheiros",
-      "email": "pinheiros@gmail.com",
-      "senha": "11122233",
-      "tipo_usuario": "instituicao",
-      "telefone": "1199355755",
-      "cidade": "São Paulo"
+      "id_user": "5",
+      "nome": "Murilo",
+      "email": "murilo@gmail.com",
+      "senha": "12345678",
+      "tipo_usuario": "atleta",
+      "telefone": "2199995555",
+      "cidade": "Rio de Janeiro"
     }
 
 ###
