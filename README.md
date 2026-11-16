@@ -1,56 +1,122 @@
-# Welcome to your Expo app 👋
+# 🏆 PA-Sports – Plataforma de Oportunidades Esportivas
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+![PA-Sports](docs/Página%20Home.png)
 
-## Get started
+O **PA-Sports** é um projeto desenvolvido com o objetivo de conectar atletas amadores a oportunidades no esporte profissional. A plataforma permite visualizar e pesquisar peneiras esportivas disponíveis, utilizando filtros por modalidade e faixa etária.
 
-1. Install dependencies
+Além disso, conta com um sistema de cadastro e perfil de atletas, permitindo que instituições esportivas consultem informações dos jogadores e identifiquem novos talentos. Dessa forma, o projeto busca facilitar a divulgação de oportunidades e aproximar atletas de instituições esportivas.
 
-   ```bash
-   npm install
+![PA-Sports](docs/Página%20Login.png)
+![Pa-Sports](docs/Página%20Cadastrar.png)
+
+## 🚀 Tecnologias
+
+### Mobile
+- React Native
+- JavaScript
+
+### Back-end
+- Node.js
+- API REST
+
+### Banco de Dados
+- MySQL
+- XAMPP
+
+## 📦 Como Utilizar
+
+### Configurações Iniciais
+
+Antes de executar o projeto, é necessário instalar e configurar:
+
+- [Node.js](https://nodejs.org/)
+- [XAMPP](https://www.apachefriends.org/pt_br/index.html)
+- [Android Studio](https://developer.android.com/studio) (para execução do emulador Android)
+
+### 📱 Rodando o Aplicativo Mobile
+
+1. Clone o repositório:
+
+   ```sh
+   git clone https://github.com/HenriqueGaneko/PA-Sports.git
    ```
 
-2. Start the app
+2. Acesse o diretório do projeto:
 
-   ```bash
-   npx expo start
+   ```sh
+   cd PA-Sports
    ```
 
-In the output, you'll find options to open the app in a
+3. Instale as dependências na pasta do mobile do projeto:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```sh
+   cd mobile
+   npm install expo
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+4. Inicie o servidor:
 
-## Get a fresh project
+   ```sh
+   npm run android
+   ```
 
-When you're ready, run:
+5. Execute o aplicativo no emulador ou dispositivo configurado.
 
-```bash
-npm run reset-project
-```
+### ⚙️ Rodando a API
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+1. Acesse o diretório do Mobile em outro terminal:
 
-### Other setup steps
+   ```sh
+   cd Back-End
+   ```
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+2. Instale as dependências:
 
-## Learn more
+   ```sh
+   npm install 
+   ```
 
-To learn more about developing your project with Expo, look at the following resources:
+3. Configure as variáveis de ambiente necessárias para a conexão com o banco de dados.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+4. Inicie o servidor:
 
-## Join the community
+   ```sh
+   npm run dev
+   ```
 
-Join our community of developers creating universal apps.
+5. A API estará disponível no endereço local configurado no projeto.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### 🗄️ Configurando o Banco de Dados
+
+1. Instale e abra o XAMPP.
+2. Inicie os serviços **Apache** e **MySQL**, conforme a configuração do projeto.
+3. Acesse o phpMyAdmin:
+
+   ```text
+   http://localhost/phpmyadmin
+   ```
+
+4. Crie o banco de dados utilizado pelo PA-Sports.
+5. Importe o arquivo SQL disponibilizado no projeto.
+6. Configure as credenciais de acesso ao banco de dados na API.
+
+Após essas etapas, o aplicativo poderá realizar as requisições à API e acessar as informações armazenadas no banco de dados.
+
+## 🏆 Integrantes
+
+- **Henrique Ganeko Ligeiro** – [GitHub](https://github.com/HenriqueGaneko)
+- **Bruno Sérgio Mendes de Oliveira**
+
+## 📚 Referências
+
+- [React Native Documentation](https://reactnative.dev/)
+- [Node.js Documentation](https://nodejs.org/docs/latest/api/)
+- [MySQL Documentation](https://dev.mysql.com/doc/)
+- [MDN Web Docs](https://developer.mozilla.org/)
+- [XAMPP](https://www.apachefriends.org/)
+
+---
+
+<p align="center"><strong>PA-Sports – Conectando talentos a oportunidades!</strong></p>
+
+<p align="center">Projeto desenvolvido como parte de um trabalho acadêmico.</p>
