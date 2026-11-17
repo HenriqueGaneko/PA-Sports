@@ -1,48 +1,94 @@
-const { db } = require("../databases/DatabaseContext.js");
-const { valuesParams, extrair_dados, gerar_sqlFields, gerar_sqlParams, gerar_sqlSets } = require("../utils/sqlcomandos.js");
+import { db } from "../databases/DatabaseContext.js";
+import * as sqlutils from "../utils/sqlTextos.js"
 
-const tableName = "instituicoes";
+export const tableName = "instituicoes";
 
-async function Get() {
-  const sqlText = `SELECT * FROM ${tableName} ORDER BY id_instituicao`;
-  const [result] = await db.execute(sqlText);
-  return { message: "Success", data: result };
+export async function Get ( req, res)  {
+    try {
+        const results = await db.execute(
+            `SELECT * FROM ${tableName} ORDER BY id_instituicao`
+        );
+        return {"message":"Success","data":results[0]} ;
+    } catch (error) {
+        console.log(error);
+        return {"message": "error", "Error": error.message};
+    }
 }
 
-async function GetById(id) {
-  const sqlText = `SELECT * FROM ${tableName} WHERE id_instituicao = ?`;
-  const [result] = await db.execute(sqlText, [id]);
-  return { message: "Success", data: result };
+export async function GetById(id){
+    try {
+        const results = await db.execute(
+            `SELECT * FROM ${tableName} WHERE id_instituicao = ? ORDER BY id_instituicao`,
+            [id]
+        );
+        return {"message":"Success","data":results[0]} ;
+    } catch (error) {
+       return {"message": "error", "Error": error.message} 
+    }
 }
 
-async function Post(payload) {
-  if (!payload) return { message: "Error", data: "Dados não informados!" };
-  extrair_dados(payload);
-  const local_fields = gerar_sqlFields();
-  const local_params = gerar_sqlParams();
-  const valuessql = valuesParams();
-  const sqlText = `INSERT INTO ${tableName} ( ${local_fields} ) VALUES ( ${local_params} )`;
-  const [result] = await db.execute(sqlText, valuessql);
-  return { message: "Success", data: result };
+export async function GetByEmailSenha(email, senha){
+    try {
+        
+        const results = await db.execute(
+            `SELECT * FROM ${tableName} WHERE WHERE email = ? AND senha = ?`,
+            [email, senha]
+        );
+        if (results[0].length === 0) {
+          return {"message": "error", "Error": "resgistro não localizado"} 
+        }            
+        return {"message":"Success","data":results[0]} ;
+    } catch (error) {
+       return {"message": "error", "Error": error.message} 
+    }
 }
 
-async function Put(payload, id) {
-  if (!payload) return { message: "Error", data: "Dados não informados!" };
-  extrair_dados(payload);
-  const local_Sets = gerar_sqlSets();
-  const local_values = valuesParams();
-  const sqlText = `UPDATE ${tableName} SET ${local_Sets} WHERE id_instituicao = ?`;
-  local_values.push(id);
-  const [result] = await db.execute(sqlText, local_values);
-  return { message: "Success", data: result };
+export async function Delete(id){
+    try {
+        const results = await db.execute(
+            `DELETE FROM ${tableName} WHERE id_instituicao = ?`,
+            [id]
+        );
+        return {"message":"Success","data":results} ;
+    } catch (error) {
+       return {"message": "error", "Error": error.message} 
+    }
 }
 
-async function Delete(id) {
-  const sqlText = `DELETE FROM ${tableName} WHERE id_instituicao = ?`;
-  const [result] = await db.execute(sqlText, [id]);
-  return { message: "Success", data: result };
+export async function Post( data ){
+    try {
+        
+        const payload = data;
+        sqlutils.extrair_dados( payload );
+        const sqlFields = sqlutils.gerar_sqlFields();
+        const sqlParms = sqlutils.gerar_sqlParams();
+        const sqlValuesParms = sqlutils.listParms();  
+        const sqlTexto = `INSERT INTO ${tableName} ( ${sqlFields} )  VALUES ( ${sqlParms} )`
+        console.log( sqlTexto);
+
+        const results = await db.execute( sqlTexto,  sqlValuesParms
+        );
+        return {"message":"Success","data":results} ;
+    } catch (error) {
+        return {"message": "error", "Error": error.message} 
+    }
+
 }
 
-function EndPointName() { return tableName; }
+export async function Put( data, id ){
+    try {
+        
+        sqlutils.extrair_dados(data) ;
+        const sqlSets = sqlutils.gerar_sqlSets();
+        const sqlValuesParms = sqlutils.listParms() ;
+        sqlValuesParms.push( id );
 
-module.exports = { Get, GetById, Post, Put, Delete, EndPointName };
+        const results= await db.execute(
+            `UPDATE ${tableName} SET ${sqlSets} WHERE id_instituicao = ?`,
+            sqlValuesParms
+        );
+        return {"message":"Success","data":results} ;
+    } catch (error) {
+        return {"message": "error", "Error": error.message} 
+    }
+}

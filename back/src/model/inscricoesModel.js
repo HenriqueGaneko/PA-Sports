@@ -1,99 +1,148 @@
-const { db } = require("../databases/DatabaseContext.js");
-const { valuesParams, extrair_dados, gerar_sqlFields, gerar_sqlParams, gerar_sqlSets } = require("../utils/sqlcomandos.js");
+import { db } from "../databases/DatabaseContext.js";
+import * as sqlutils from "../utils/sqlTextos.js"
 
-const tableName = "inscricoes";
+export const tableName = "inscricoes";
 
-async function Get() {
-  const sqlText = `
-    SELECT
-      inscricoes.id_inscricao,
-      inscricoes.data_inscricao,
-      atletas.id_atleta,
-      atletas.nome        AS nome_atleta,
-      atletas.email       AS email_atleta,
-      peneiras.id_peneira,
-      peneiras.titulo     AS titulo_peneira,
-      peneiras.data_peneira,
-      peneiras.localizacao
-    FROM ${tableName}
-    INNER JOIN atletas  ON inscricoes.id_atleta  = atletas.id_atleta
-    INNER JOIN peneiras ON inscricoes.id_peneira = peneiras.id_peneira
-    ORDER BY inscricoes.id_inscricao
-  `;
-  const [result] = await db.execute(sqlText);
-  return { message: "Success", data: result };
+export async function Get(req, res) {
+    try {
+        const sqlText = `
+        SELECT
+            inscricoes.id_inscricao,
+            inscricoes.data_inscricao,
+            atletas.id_atleta,
+            atletas.nome AS nome_atleta,
+            atletas.email AS email_atleta,
+            peneiras.id_peneira,
+            peneiras.titulo AS titulo_peneira,
+            peneiras.data_peneira,
+            peneiras.localizacao
+            FROM ${tableName}
+            INNER JOIN atletas  ON inscricoes.id_atleta  = atletas.id_atleta
+            INNER JOIN peneiras ON inscricoes.id_peneira = peneiras.id_peneira
+            ORDER BY inscricoes.id_inscricao
+        `;
+        const results = await db.execute(sqlText);
+        return { "message": "Success", "data": results[0] };
+    } catch (error) {
+        console.log(error);
+        return { "message": "error", "Error": error.message };
+    }
 }
 
-async function GetById(id) {
-  const sqlText = `
-    SELECT
-      inscricoes.id_inscricao,
-      inscricoes.data_inscricao,
-      atletas.id_atleta,
-      atletas.nome        AS nome_atleta,
-      atletas.email       AS email_atleta,
-      peneiras.id_peneira,
-      peneiras.titulo     AS titulo_peneira,
-      peneiras.data_peneira,
-      peneiras.localizacao
-    FROM ${tableName}
-    INNER JOIN atletas  ON inscricoes.id_atleta  = atletas.id_atleta
-    INNER JOIN peneiras ON inscricoes.id_peneira = peneiras.id_peneira
-    WHERE inscricoes.id_inscricao = ?
-  `;
-  const [result] = await db.execute(sqlText, [id]);
-  return { message: "Success", data: result };
+export async function GetById(id) {
+    try {
+        const sqlText = `
+        SELECT
+            inscricoes.id_inscricao,
+            inscricoes.data_inscricao,
+            atletas.id_atleta,
+            atletas.nome AS nome_atleta,
+            atletas.email AS email_atleta,
+            peneiras.id_peneira,
+            peneiras.titulo AS titulo_peneira,
+            peneiras.data_peneira,
+            peneiras.localizacao
+            FROM ${tableName}
+            INNER JOIN atletas  ON inscricoes.id_atleta  = atletas.id_atleta
+            INNER JOIN peneiras ON inscricoes.id_peneira = peneiras.id_peneira
+            WHERE inscricoes.id_inscricao = ?
+            ORDER BY inscricoes.id_inscricao
+        `;
+        const results = await db.execute(sqlText, [id]);
+        return { "message": "Success", "data": results[0] };
+    } catch (error) {
+        return { "message": "error", "Error": error.message }
+    }
 }
 
-// GET /inscricoes/atleta/:id  — inscrições de um atleta específico
-async function GetByAtleta(id_atleta) {
-  const sqlText = `
-    SELECT
-      inscricoes.id_inscricao,
-      inscricoes.data_inscricao,
-      inscricoes.id_peneira,
-      peneiras.titulo     AS titulo_peneira,
-      peneiras.data_peneira,
-      peneiras.localizacao,
-      peneiras.vagas
-    FROM ${tableName}
-    INNER JOIN peneiras ON inscricoes.id_peneira = peneiras.id_peneira
-    WHERE inscricoes.id_atleta = ?
-    ORDER BY peneiras.data_peneira
-  `;
-  const [result] = await db.execute(sqlText, [id_atleta]);
-  return { message: "Success", data: result };
+export async function GetByAtleta(id_atleta) {
+    try {
+        const sqlText = `
+        SELECT
+        inscricoes.id_inscricao,
+        inscricoes.data_inscricao,
+        inscricoes.id_peneira,
+        peneiras.titulo AS titulo_peneira,
+        peneiras.data_peneira,
+        peneiras.localizacao,
+        peneiras.vagas
+        FROM ${tableName}
+        INNER JOIN peneiras ON inscricoes.id_peneira = peneiras.id_peneira
+        WHERE inscricoes.id_atleta = ?
+        ORDER BY peneiras.data_peneira
+        `;
+        const results = await db.execute(sqlText, [id_atleta]);
+        return { "message": "Success", "data": results[0] };
+    } catch (error) {
+        return { "message": "error", "Error": error.message }
+    }
 }
 
-// Payload: { id_atleta, id_peneira, data_inscricao }
-async function Post(payload) {
-  if (!payload) return { message: "Error", data: "Dados não informados!" };
-  extrair_dados(payload);
-  const local_fields = gerar_sqlFields();
-  const local_params = gerar_sqlParams();
-  const valuessql = valuesParams();
-  const sqlText = `INSERT INTO ${tableName} ( ${local_fields} ) VALUES ( ${local_params} )`;
-  const [result] = await db.execute(sqlText, valuessql);
-  return { message: "Success", data: result };
+export async function GetByInscricoesDoUser(id) {
+    try {
+        const results = await db.execute(
+            ` SELECT
+	        c.title, c.duration
+        FROM ${tableName} i
+        INNER JOIN cursos c ON c.id = i.idcurso
+        WHERE i.iduser = ?
+        GROUP BY i.id
+        ORDER BY i.id ASC
+    `,
+            [id],
+        );
+        return { message: "Success", data: results[0] };
+    } catch (error) {
+        return { message: "error", Error: error.message };
+    }
 }
 
-async function Put(payload, id) {
-  if (!payload) return { message: "Error", data: "Dados não informados!" };
-  extrair_dados(payload);
-  const local_Sets = gerar_sqlSets();
-  const local_values = valuesParams();
-  const sqlText = `UPDATE ${tableName} SET ${local_Sets} WHERE id_inscricao = ?`;
-  local_values.push(id);
-  const [result] = await db.execute(sqlText, local_values);
-  return { message: "Success", data: result };
+export async function Delete(id) {
+    try {
+        const results = await db.execute(
+            `DELETE FROM ${tableName} WHERE id_inscricao = ?`,
+            [id]
+        );
+        return { "message": "Success", "data": results };
+    } catch (error) {
+        return { "message": "error", "Error": error.message }
+    }
 }
 
-async function Delete(id) {
-  const sqlText = `DELETE FROM ${tableName} WHERE id_inscricao = ?`;
-  const [result] = await db.execute(sqlText, [id]);
-  return { message: "Success", data: result };
+export async function Post(data) {
+    try {
+
+        const payload = data;
+        sqlutils.extrair_dados(payload);
+        const sqlFields = sqlutils.gerar_sqlFields();
+        const sqlParms = sqlutils.gerar_sqlParams();
+        const sqlValuesParms = sqlutils.listParms();
+        const sqlTexto = `INSERT INTO ${tableName} ( ${sqlFields} )  VALUES ( ${sqlParms} )`
+        console.log(sqlTexto);
+
+        const results = await db.execute(sqlTexto, sqlValuesParms
+        );
+        return { "message": "Success", "data": results };
+    } catch (error) {
+        return { "message": "error", "Error": error.message }
+    }
+
 }
 
-function EndPointName() { return tableName; }
+export async function Put(data, id) {
+    try {
 
-module.exports = { Get, GetById, GetByAtleta, Post, Put, Delete, EndPointName };
+        sqlutils.extrair_dados(data);
+        const sqlSets = sqlutils.gerar_sqlSets();
+        const sqlValuesParms = sqlutils.listParms();
+        sqlValuesParms.push(id);
+
+        const results = await db.execute(
+            `UPDATE ${tableName} SET ${sqlSets} WHERE id_inscricao = ?`,
+            sqlValuesParms
+        );
+        return { "message": "Success", "data": results };
+    } catch (error) {
+        return { "message": "error", "Error": error.message }
+    }
+}

@@ -1,8 +1,8 @@
-const {pool} = require("./ConnectionMysql.js");
-const {getDbConnection}  = require("./ConnectionSqllite.js"); // Função que criamos antes
-const {MySQLStrategy, SQLiteStrategy } = require("./DatabaseStrategy.js");
-const { DatabaseSchemaMysql } = require("./schemas/mysqlSchema.js");
-const { DatabaseSchemaSqlite } = require("./schemas/sqliteSchema.js")
+import { createDatabaseIfNotExists, pool } from "./connections/connectionMysql.js";
+import { getDbConnection } from "./connections/connectionSqllite.js";
+import { MySQLStrategy, SQLiteStrategy } from "./DatabaseStrategy.js";
+import { DatabaseSchema } from "./schema/databaseSchema.js";
+import { DatabaseSeeder } from "./seed/databaseSeeder.js"
 
 class DatabaseContext {
     constructor() {
@@ -10,37 +10,51 @@ class DatabaseContext {
     }
 
     async init() {
-        // podemos utilizar um switch case
+        // Centraliza a flag de reset (pode vir do .env se quiser)
+        const resetarBanco = process.env.DB_RESET?.toLowerCase() === 'true';
+        const db_name = process.env.DB_DATABASE?.toLowerCase() || 'apirest';
+        const rodarSeed = process.env.DB_SEED?.toLowerCase() === 'true';
+
+        //console.log( ` init- context: ${resetarBanco}`);
+
         if (process.env.DB_TYPE === 'sqlite') {
+            const db = await getDbConnection(resetarBanco);
             
-            const db = await getDbConnection();
+            // CORREÇÃO 1: Instanciar a estratégia correspondente
             this.strategy = new SQLiteStrategy(db);
             
-            // Chama a classe de schema passando a estratégia atual
-            await DatabaseSchemaSqlite.initialize(this.strategy);
+            // GARANTIA: Define o tipo na estratégia para o Schema mapear corretamente
+            this.strategy.type = 'sqlite';
+            this.strategy.databaseName = db_name ;
             
-            console.log("Conectado com sucesso ao sqlite.");
-
         } else {
-            //
-            this.strategy = new MySQLStrategy(pool);
-            // Chama a classe de schema passando a estratégia atual
-            await DatabaseSchemaMysql.initialize(this.strategy);
 
-            console.log("Conectado com sucesso ao MySQL.");
+            // Garante que o banco MariaDB/MySQL existe
+            await createDatabaseIfNotExists();
+            this.strategy = new MySQLStrategy(pool);            
+            // GARANTIA: Define o tipo na estratégia para o Schema mapear corretamente
+            this.strategy.type = 'mysql';
+            this.strategy.databaseName = db_name ;
+         
         }
+        // 1. Cria/atualiza estrutura na ordem topológica
+        await DatabaseSchema.initialize(this.strategy, resetarBanco);
+        
+        // 2. Popula dados iniciais na mesma ordem topológica
+        if (rodarSeed) {
+            await DatabaseSeeder.run(this.strategy, resetarBanco);
+        }
+        //
+        console.log(`Ambiente ${this.strategy.type.toUpperCase()} configurado com sucesso.`);
     }
   
     async execute(query, params) {
-     
+        if (!this.strategy) {
+            throw new Error("Contexto de banco de dados não inicializado.");
+        }
         return await this.strategy.execute(query, params);
-     
     }
 }
 
-const db = new DatabaseContext();
-
-module.exports =  { db } ;
-
-
-
+export const db = new DatabaseContext();
+await db.init();

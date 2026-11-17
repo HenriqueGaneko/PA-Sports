@@ -1,81 +1,78 @@
-// ============================================================
-// esportesModel.js  —  camada de acesso ao banco para "esportes"
-// ============================================================
-// Tabela simples, sem chaves estrangeiras.
-// Campos: id_esporte (PK AUTO_INCREMENT), nome_esporte
-// ============================================================
+import { db } from "../databases/DatabaseContext.js";
+import * as sqlutils from "../utils/sqlTextos.js"
 
-const { db } = require("../databases/DatabaseContext.js");
-const {
-  valuesParams,
-  extrair_dados,
-  gerar_sqlFields,
-  gerar_sqlParams,
-  gerar_sqlSets,
-} = require("../utils/sqlcomandos.js");
+export const tableName = "esportes";
 
-const tableName = "esportes";
-
-// ── GET: buscar todos os esportes ───────────────────────────
-async function Get() {
-  const sqlText = `SELECT * FROM ${tableName} ORDER BY id_esporte`;
-  const [result, fields] = await db.execute(sqlText);
-  return { message: "Success", data: result };
+export async function Get ( req, res)  {
+    try {
+        const results = await db.execute(
+            `SELECT * FROM ${tableName} ORDER BY id_esporte`
+        );
+        return {"message":"Success","data":results[0]} ;
+    } catch (error) {
+        console.log(error);
+        return {"message": "error", "Error": error.message};
+    }
 }
 
-// ── GET BY ID: buscar um esporte pelo id ────────────────────
-async function GetById(id) {
-  const sqlText = `SELECT * FROM ${tableName} WHERE id_esporte = ?`;
-  const [result, fields] = await db.execute(sqlText, [id]);
-  return { message: "Success", data: result };
+export async function GetById(id_esporte){
+    try {
+        const results = await db.execute(
+            `SELECT * FROM ${tableName} WHERE id_esporte = ? ORDER BY id_esporte `,
+            [id_esporte]
+        );
+        return {"message":"Success","data":results[0]} ;
+    } catch (error) {
+       return {"message": "error", "Error": error.message} 
+    }
 }
 
-// ── POST: inserir um novo esporte ───────────────────────────
-// Payload esperado:  { "nome_esporte": "Futebol" }
-// O nome da chave deve ser IGUAL ao nome da coluna no banco
-async function Post(payload) {
-  if (!payload) return { message: "Error", data: "Dados não informados!" };
-
-  extrair_dados(payload);
-  const local_fields = gerar_sqlFields();
-  const local_params = gerar_sqlParams();
-  const valuessql = valuesParams();
-
-  // SQL gerado: INSERT INTO esportes ( nome_esporte ) VALUES ( ? )
-  const sqlText = `INSERT INTO ${tableName} ( ${local_fields} ) VALUES ( ${local_params} )`;
-
-  const [result, fields] = await db.execute(sqlText, valuessql);
-  return { message: "Success", data: result };
+export async function Delete(id_esporte){
+    try {
+        const results = await db.execute(
+            `DELETE FROM ${tableName} WHERE id_esporte = ?`,
+            [id_esporte]
+        );
+        return {"message":"Success","data":results} ;
+    } catch (error) {
+       return {"message": "error", "Error": error.message} 
+    }
 }
 
-// ── PUT: atualizar um esporte ───────────────────────────────
-// Payload esperado:  { "nome_esporte": "Voleibol" }
-async function Put(payload, id) {
-  if (!payload) return { message: "Error", data: "Dados não informados!" };
+export async function Post( data ){
+    try {
+        
+        const payload = data;
+        sqlutils.extrair_dados( payload );
+        const sqlFields = sqlutils.gerar_sqlFields();
+        const sqlParms = sqlutils.gerar_sqlParams();
+        const sqlValuesParms = sqlutils.listParms();  
+        const sqlTexto = `INSERT INTO ${tableName} ( ${sqlFields} )  VALUES ( ${sqlParms} )`
+        console.log( sqlTexto);
 
-  extrair_dados(payload);
-  const local_Sets = gerar_sqlSets();
-  const local_values = valuesParams();
+        const results = await db.execute( sqlTexto,  sqlValuesParms
+        );
+        return {"message":"Success","data":results} ;
+    } catch (error) {
+        return {"message": "error", "Error": error.message} 
+    }
 
-  // SQL gerado: UPDATE esportes SET nome_esporte = ? WHERE id_esporte = ?
-  const sqlText = `UPDATE ${tableName} SET ${local_Sets} WHERE id_esporte = ?`;
-
-  local_values.push(id); // id vai por último!
-  const [result, fields] = await db.execute(sqlText, local_values);
-  return { message: "Success", data: result };
 }
 
-// ── DELETE: remover um esporte ──────────────────────────────
-// ATENÇÃO: só funciona se não houver peneiras usando esse esporte (FK)
-// Se quiser deletar mesmo assim, remova as peneiras antes
-async function Delete(id) {
-  const sqlText = `DELETE FROM ${tableName} WHERE id_esporte = ?`;
-  const [result, fields] = await db.execute(sqlText, [id]);
-  return { message: "Success", data: result };
-}
+export async function Put( data, id_esporte ){
+    try {
+        
+        sqlutils.extrair_dados(data) ;
+        const sqlSets = sqlutils.gerar_sqlSets();
+        const sqlValuesParms = sqlutils.listParms() ;
+        sqlValuesParms.push( id_esporte );
 
-function EndPointName() {
-  return tableName;
+        const results= await db.execute(
+            `UPDATE ${tableName} SET ${sqlSets} WHERE id_esporte = ?`,
+            sqlValuesParms
+        );
+        return {"message":"Success","data":results} ;
+    } catch (error) {
+        return {"message": "error", "Error": error.message} 
+    }
 }
-
-module.exports = { Get, GetById, Post, Put, Delete, EndPointName };

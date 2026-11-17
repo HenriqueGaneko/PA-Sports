@@ -1,0 +1,28 @@
+{
+  "esportes" : [
+    { "id_esporte": 1, "nome_esporte": "Futebol" },
+    { "id_esporte": 2, "nome_esporte": "Volei" },
+    { "id_esporte": 3, "nome_esporte": "Natação" },
+    { "id_esporte": 4, "nome_esporte": "Basquete" },
+    { "id_esporte": 5, "nome_esporte": "Tenis" },
+    { "id_esporte": 6, "nome_esporte": "Atletismo" }
+  ],
+  "instituicoes" : [
+    { "id_instituicao": 1, "nome": "Palmeiras" , "email":"palmeiras@email.com", "senha":"123456", "telefone": "16 99999-9999", "cidade": "São Paulo"},
+    { "id_instituicao": 2, "nome": "Santos FC" , "email":"santos@email.com", "senha":"123456", "telefone": "16 99999-9999", "cidade": "São Paulo"},
+    { "id_instituicao": 3, "nome": "Minas Tênis Clube" , "email":"minasClube@email.com", "senha":"123456", "telefone": "16 99999-9999", "cidade": "São Paulo"},
+    { "id_instituicao": 4, "nome": "SESI Franca-Basquete" , "email":"sesifranca@email.com", "senha":"123456", "telefone": "16 99999-9999", "cidade": "São Paulo"},
+    { "id_instituicao": 5, "nome": "Flamengo" , "email":"flamengo@email.com", "senha":"123456", "telefone": "16 99999-9999", "cidade": "São Paulo"},
+    { "id_instituicao": 6, "nome": "Cruzeiro" , "email":"cruzeiro@email.com", "senha":"123456", "telefone": "16 99999-9999", "cidade": "São Paulo"},
+    { "id_instituicao": 7, "nome": "Grêmio Náutico União" , "email":"gremioNautico@email.com", "senha":"123456", "telefone": "16 99999-9999", "cidade": "São Paulo"}
+  ],
+  "users" : [
+    { "id": 1, "name": "Admin", "login": "admin@admin", "password":"123456", "actived": true }
+  ],
+  "roles" : [
+    {"id": 1, "role": "Admin"},
+    {"id": 2, "role": "user"},
+    {"id": 3, "role": "Manage"}
+  ]
+
+}

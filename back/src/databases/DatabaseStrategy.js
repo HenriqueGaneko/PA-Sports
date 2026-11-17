@@ -1,5 +1,5 @@
 // Implementação para MySQL
-class MySQLStrategy {
+export class MySQLStrategy {
     constructor(pool) { this.pool = pool; }
     
     async execute(query, params = []) {
@@ -9,7 +9,7 @@ class MySQLStrategy {
 }
 
 // Implementação para SQLite
-class SQLiteStrategy {
+export class SQLiteStrategy {
     constructor(db) { this.db = db; }
 
     async execute(query, params = []) {
@@ -20,8 +20,7 @@ class SQLiteStrategy {
             // Retorna no formato [ dados, colunas ]
             return [results, fields];
         } else {
-            const result = await this.db.run(query, params);
-            
+            const result = await this.db.run(query, params);       
             // O MySQL em comandos de escrita retorna um objeto com essas propriedades
             // na primeira posição do array
             const mysqlLikeResult = {
@@ -34,5 +33,3 @@ class SQLiteStrategy {
         }
     }
 }
-
-module.exports = { MySQLStrategy , SQLiteStrategy }

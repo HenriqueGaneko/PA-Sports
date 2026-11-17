@@ -1,36 +1,16 @@
-const Routes = require("express");
-const myController = require("../controller/atletasControllers");
-const routes = Routes();
-const endPoint = `/${myController.EndPointName()}`;
+import { Router } from "express";
+import * as mycontroller from "../controller/atletasController.js"
 
-// GET /atletas
-routes.get(endPoint, async (req, res) => {
-  res.status(200).json(await myController.Get(req, res));
-});
+const pointName = mycontroller.getTableName() || 'atletas';
 
-// GET /atletas/:id
-routes.get(`${endPoint}/:id`, async (req, res) => {
-  res.status(200).json(await myController.GetById(req, res));
-});
+const endPoint = `/${pointName}`;
 
-// POST /atletas/login  — verifica email+senha
-routes.post(`${endPoint}/login`, async (req, res) => {
-  res.status(200).json(await myController.GetByEmailSenha(req, res));
-});
+const router = Router();
 
-// POST /atletas  — cadastra novo atleta
-routes.post(endPoint, async (req, res) => {
-  res.status(201).json(await myController.Post(req, res));
-});
-
-// PUT /atletas/:id
-routes.put(`${endPoint}/:id`, async (req, res) => {
-  res.status(200).json(await myController.Put(req, res));
-});
-
-// DELETE /atletas/:id
-routes.delete(`${endPoint}/:id`, async (req, res) => {
-  res.status(200).json(await myController.Delete(req, res));
-});
-
-module.exports = routes;
+router.get( `${endPoint}`, (req,res)=>{ mycontroller.Get(req,res) });
+router.get( `${endPoint}/:id`, (req,res)=>{ mycontroller.GetById(req,res) });
+router.delete( `${endPoint}/:id`, (req,res)=>{ mycontroller.Delete(req,res) });
+router.post(`${endPoint}`,(req,res) => { mycontroller.Post(req,res)});
+router.put(`${endPoint}/:id`, (req,res) => { mycontroller.Put(req,res)} );
+router.post(`${endPoint}/login`,(req,res) => { mycontroller.GetByEmailSenha(req,res)});
+export default router;

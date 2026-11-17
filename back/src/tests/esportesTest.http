@@ -1,33 +1,37 @@
-# url ou dominio
-@URL = http://localhost
-# Porta do servidor
-@PORT = 3600
-# endpoint ou rota do teste
-@ENDPOINT = esportes
-# uri - rota final do teste
-@URI = {{URL}}:{{PORT}}/{{ENDPOINT}}
+@host = http://localhost
+@port = 3000
+@endpoint = esportes
 
-GET {{URI}}
-###
-GET {{URI}}/5
+@url = {{host}}:{{port}}/{{endpoint}} 
 
 ###
-POST {{URI}}
+GET {{url}}
+
+###
+# getById
+GET {{url}}/7
+
+
+###
+# inclui novos registros
+POST  {{url}}
 Content-Type: application/json; charset=utf-8
 
-  {   "id_esporte": "5", 
-      "nome_esporte": "Tênis"
-    }
+ {
+  "nome_esporte": "vira copo"
+      
+ }
 
 ###
-PUT {{URI}}/4
+
+PUT  {{url}}/7
 Content-Type: application/json; charset=utf-8
 
-  {
-      "id_esporte": "1",
-      "nome_esporte": "Futebol"
-    }
-
+{
+ "nome_esporte": "Maratona" 
+}
 
 ###
-DELETE {{URI}}/7
+DELETE  {{url}}/9
+Content-Type: application/json; charset=utf-8
+

@@ -1,0 +1,88 @@
+{
+  "tables": {
+    "users": {
+      "columns": {
+        "id": { "type": "int", "primaryKey": true, "autoIncrement": true },
+        "name": { "type": "string", "size": 100, "nullable": false , "unique": true},
+        "login": { "type": "string", "size": 150, "nullable": false , "unique": true},
+        "password": { "type": "string", "size": 254, "nullable": false },  
+        "validated" : { "type": "boolean", "nullable": false, "default": false },            
+        "created_at": {
+          "type": "datetime",
+          "nullable": false,
+          "default": true
+        },
+        "actived": { "type": "boolean", "nullable": false, "default": true }
+      }
+    },
+    "roles": {
+      "columns": {
+        "id": { "type": "int", "primaryKey": true, "autoIncrement": true },
+        "role": { "type": "string", "size": 100, "nullable": false, "unique": true },
+        "created_at": { "type": "datetime", "nullable": false, "default": true }
+      }
+    },
+    "usersroles": {
+      "columns": {
+        "id": { "type": "int", "primaryKey": true, "autoIncrement": true },
+        "idroler": { "type": "int", "nullable": false },
+        "iduser": { "type": "int", "nullable": false , "unique": true},
+        "created_at": { "type": "datetime", "nullable": false, "default": true }
+      }
+    },
+    "esportes": {
+      "columns": {
+        "id_esporte": { "type": "int", "primaryKey": true, "autoIncrement": true },
+        "nome_esporte": { "type": "string", "size": 150, "nullable": false },
+        "created_at": { "type": "datetime", "nullable": false, "default": true }
+      }
+    },
+    "atletas":{
+      "columns":{
+        "id_atleta":{"type":"int", "autoIncrement":true, "primaryKey":true},
+        "nome": { "type": "string", "size": 100, "nullable": false },
+        "email": { "type": "string", "size": 100, "nullable": false },
+        "senha": { "type": "string", "size": 255, "nullable": false },
+        "data_nascimento": { "type": "date",  "nullable": false },
+        "telefone": { "type": "string", "size": 20, "nullable": false },
+        "cidade": { "type": "string", "size": 100, "nullable": false },
+        "esporte": { "type": "string", "size": 50, "nullable": false },
+        "created_at": { "type": "datetime", "nullable": false, "default": true }       
+      }
+    },
+    "instituicoes":{
+      "columns":{
+        "id_instituicao":{"type":"int", "autoIncrement":true, "primaryKey":true},
+        "nome": { "type": "string", "size": 100, "nullable": false },
+        "email": { "type": "string", "size": 100, "nullable": false },
+        "senha": { "type": "string", "size": 255, "nullable": false },
+        "telefone": { "type": "string", "size": 20, "nullable": false },
+        "cidade": { "type": "string", "size": 100, "nullable": false },
+        "created_at": { "type": "datetime", "nullable": false, "default": true }       
+      }
+    },
+    "peneiras":{
+      "columns": {
+        "id_peneira":{"type":"int", "primaryKey":true, "autoIncrement":true},
+        "titulo":{"type":"string", "size":100, "nullable":false, "unique": true},
+        "descricao":{"type":"text","size":300, "nullable":true},
+        "data_peneira":{"type":"date", "nullable":false, "default":false},
+        "localizacao":{"type":"string","size":150, "nullable":true},
+        "vagas":{"type":"int"},
+        "id_esporte":{"type":"int", "nullable":false,"foreignkey":true, "references": "esportes", "idreference":"id_esporte"},
+        "id_instituicao":{"type":"int", "nullable":false, "foreignkey":true, "references": "instituicoes", "idreference":"id_instituicao"},
+        "created_by":{"type":"datetime", "nullable":false, "default":true},
+        "actived":{"type":"boolean", "nullable":false, "default":true}        
+      }
+    },
+    "inscricoes":{
+      "columns":{
+        "id_inscricao":{"type":"int", "autoIncrement":true, "primaryKey":true},
+        "data_inscricao":{"type":"datetime", "nullable":false, "default":false},
+        "id_atleta":{"type":"int", "nullable":false, "foreignkey":true, "references": "atletas", "idreference":"id_atleta"},
+        "id_peneira":{"type":"int", "nullable":false, "foreignkey":true, "references": "peneiras", "idreference":"id_peneira"}
+      }
+    }
+    
+  }
+}

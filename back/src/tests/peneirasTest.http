@@ -1,46 +1,42 @@
-# url ou dominio
-@URL = http://localhost
-# Porta do servidor
-@PORT = 3600
-# endpoint ou rota do teste
-@ENDPOINT = peneiras
-# uri - rota final do teste
-@URI = {{URL}}:{{PORT}}/{{ENDPOINT}}
+@host = http://localhost
+@port = 3000
+@endpoint = peneiras
 
-GET {{URI}}
-###
-GET {{URI}}/5
+@url = {{host}}:{{port}}/{{endpoint}} 
 
 ###
-POST {{URI}}
+GET {{url}}
+
+###
+# getById
+GET {{url}}/1
+
+###
+# getByInscricoesDoUser
+GET {{url}}/inscricaouser/1
+
+
+###
+# inclui novos registros
+POST  {{url}}
 Content-Type: application/json; charset=utf-8
 
-  {
-      "id_peneira": "3",
-      "titulo": "Peneira Sub-15",
-      "descricao": "Seleção de novos atletas",
-      "data_peneira": "2026-10-06",
-      "localizacao": "CT Flamengo",
-      "vagas": "30",
-      "id_esporte": "Rio de Janeiro",
-      "id_user": "4"
-    }
+{
+  "iduser": 1,
+  "idcurso": 1
+}
 
 ###
-PUT {{URI}}/5
+
+PUT  {{url}}/2
 Content-Type: application/json; charset=utf-8
 
-  {
-      "id_peneira": "2",
-      "titulo": "Peneira Sub-15",
-      "descricao": "Seleção de novos atletas",
-      "data_peneira": "2026-10-06",
-      "localizacao": "CT Flamengo",
-      "vagas": "30",
-      "id_esporte": "Rio de Janeiro",
-      "id_user": "5"
-    }
-
+{
+  "iduser": "2",
+  "idcurso": "1"
+}
 
 ###
-DELETE {{URI}}/3
+DELETE  {{url}}/3
+Content-Type: application/json; charset=utf-8
+

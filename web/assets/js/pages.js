@@ -1,5 +1,5 @@
 // ─── URL BASE DA API ─────────────────────────────────────────
-const API_URL = '';
+// const API_URL = 'http://localhost:3000';
 
 // ─── FORMATA DATA (remove T00:00:00.000Z) ────────────────────
 function formatarData(dataStr) {

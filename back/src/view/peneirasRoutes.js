@@ -1,44 +1,17 @@
-// ============================================================
-// peneirasRoutes.js  —  rotas HTTP para "peneiras"
-// ============================================================
-// Rotas disponíveis:
-//   GET    /peneiras        → lista todas (com JOIN de esporte e user)
-//   GET    /peneiras/:id    → busca uma pelo id
-//   POST   /peneiras        → cria nova
-//   PUT    /peneiras/:id    → atualiza existente
-//   DELETE /peneiras/:id    → remove
-// ============================================================
+import { Router } from "express";
+import * as mycontroller from "../controller/peneirasController.js"
 
-const Routes = require("express");
-const myController = require("../controller/peneirasControllers");
+const pointName = mycontroller.getTableName() || 'peneiras';
 
-const routes = Routes();
+const endPoint = `/${pointName}`;
 
-const endPoint = `/${myController.EndPointName()}`; // "/peneiras"
+const router = Router();
 
-routes.get(endPoint, async (req, res) => {
-  const responseData = await myController.Get(req, res);
-  res.status(200).json(responseData);
-});
+router.get( `${endPoint}`, (req,res)=>{ mycontroller.Get(req,res) });
+router.get( `${endPoint}/:id`, (req,res)=>{ mycontroller.GetById(req,res) });
 
-routes.get(`${endPoint}/:id`, async (req, res) => {
-  const responseData = await myController.GetById(req, res);
-  res.status(200).json(responseData);
-});
+router.delete( `${endPoint}/:id`, (req,res)=>{ mycontroller.Delete(req,res) });
+router.post(`${endPoint}`,(req,res) => { mycontroller.Post(req,res)});
+router.put(`${endPoint}/:id`, (req,res) => { mycontroller.Put(req,res)} );
 
-routes.post(endPoint, async (req, res) => {
-  const responseData = await myController.Post(req, res);
-  res.status(201).json(responseData);
-});
-
-routes.put(`${endPoint}/:id`, async (req, res) => {
-  const responseData = await myController.Put(req, res);
-  res.status(200).json(responseData);
-});
-
-routes.delete(`${endPoint}/:id`, async (req, res) => {
-  const responseData = await myController.Delete(req, res);
-  res.status(200).json(responseData);
-});
-
-module.exports = routes;
+export default router;

@@ -1,29 +1,45 @@
-const Routes = require("express");
+import { Router } from "express";
+import userRoutes from "./usersRoutes.js";
+import municipiosRoutes from "./municipiosRoutes.js"
+import estadosRoutes from "./estadosRoutes.js"
+import dependenciasRoutes from "./dependenciaRoutes.js"
+import authRoutes from "./authRoutes.js"
+import clientes from "./clientesRoutes.js";
+import rolesRoutes from "./rolesRoutes.js";
+import usersRoles from "./usersRolesRoutes.js";
+import alunosRoles from "./alunosRoutes.js";
+import cursosRoutes from "./cursosRoutes.js";
+import gruposRoutes from "./gruposRoutes.js";
+import usuariosGruposRoutes from "./usuariosGruposRoutes.js";
+//
+import esportesRoutes from "./esportesRoutes.js";
+import atletasRoutes from "./atletasRoutes.js"
+import peneirasRoutes from "./peneirasRoutes.js";
+import instituicoesRoutes from "./instituicoesRoutes.js";
+import inscricoesRoutes from "./inscricoesRoutes.js";
 
-const atletasRoutes      = require("./atletasRoutes");
-const instituicoesRoutes = require("./instituicoesRoutes");
-const esportesRoutes     = require("./esportesRoutes");
-const peneirasRoutes     = require("./peneirasRoutes");
-const inscricoesRoutes   = require("./inscricoesRoutes");
 
-const routes = Routes();
+const swRoutes = Router();
 
-routes.use(atletasRoutes);
-routes.use(instituicoesRoutes);
-routes.use(esportesRoutes);
-routes.use(peneirasRoutes);
-routes.use(inscricoesRoutes);
+swRoutes.use( userRoutes );
 
-routes.get("/estatisticas", async (req, res) => {
-  try {
-    const { db } = require("../databases/DatabaseContext");
-    const [a] = await db.execute("SELECT COUNT(*) AS total FROM atletas");
-    res.json({ message: "Success", data: { atletas: Number(a[0]?.total || 0) } });
-  } catch (error) { res.status(500).json({ message: "Error", data: "Erro ao consultar estatísticas" }); }
-});
+swRoutes.use( clientes ) ;
+swRoutes.use( alunosRoles ) ;
+swRoutes.use( authRoutes ) ;
 
-routes.get("/test", (req, res) => {
-  res.status(200).json({ message: "Servidor rodando!" });
-});
+swRoutes.use( municipiosRoutes );
+swRoutes.use( estadosRoutes );
+swRoutes.use( dependenciasRoutes );
+swRoutes.use( rolesRoutes );
+swRoutes.use( usersRoles );
+swRoutes.use( cursosRoutes );
+swRoutes.use( usuariosGruposRoutes );
+swRoutes.use( gruposRoutes );
+//
+swRoutes.use( inscricoesRoutes );
+swRoutes.use( esportesRoutes ) ;
+swRoutes.use( atletasRoutes ) ;
+swRoutes.use( peneirasRoutes ) ;
+swRoutes.use( instituicoesRoutes ) ;
 
-module.exports = routes;
+export default swRoutes;

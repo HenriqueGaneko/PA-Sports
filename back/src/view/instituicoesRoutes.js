@@ -1,31 +1,16 @@
-const Routes = require("express");
-const myController = require("../controller/instituicoesControllers");
-const routes = Routes();
-const endPoint = `/${myController.EndPointName()}`;
+import { Router } from "express";
+import * as mycontroller from "../controller/instituicoesController.js"
 
-// GET /instituicoes
-routes.get(endPoint, async (req, res) => {
-  res.status(200).json(await myController.Get(req, res));
-});
+const pointName = mycontroller.getTableName() || 'atletas';
 
-// GET /instituicoes/:id
-routes.get(`${endPoint}/:id`, async (req, res) => {
-  res.status(200).json(await myController.GetById(req, res));
-});
+const endPoint = `/${pointName}`;
 
-// POST /instituicoes
-routes.post(endPoint, async (req, res) => {
-  res.status(201).json(await myController.Post(req, res));
-});
+const router = Router();
 
-// PUT /instituicoes/:id
-routes.put(`${endPoint}/:id`, async (req, res) => {
-  res.status(200).json(await myController.Put(req, res));
-});
-
-// DELETE /instituicoes/:id
-routes.delete(`${endPoint}/:id`, async (req, res) => {
-  res.status(200).json(await myController.Delete(req, res));
-});
-
-module.exports = routes;
+router.get( `${endPoint}`, (req,res)=>{ mycontroller.Get(req,res) });
+router.get( `${endPoint}/:id`, (req,res)=>{ mycontroller.GetById(req,res) });
+router.delete( `${endPoint}/:id`, (req,res)=>{ mycontroller.Delete(req,res) });
+router.post(`${endPoint}`,(req,res) => { mycontroller.Post(req,res)});
+router.put(`${endPoint}/:id`, (req,res) => { mycontroller.Put(req,res)} );
+router.post(`${endPoint}/login`,(req,res) => { mycontroller.GetByEmailSenha(req,res)});
+export default router;

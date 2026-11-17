@@ -1,3 +1,6 @@
+// ─── URL BASE DA API ─────────────────────────────────────────
+const API_URL = `http://localhost:13024`;
+
 // ─── RENDERIZA HOME ───
 (function () {
   const page = document.getElementById('page-home');
@@ -78,7 +81,7 @@
   const homePeneiras = document.getElementById('home-peneiras');
   homePeneiras.innerHTML = `<p style="color:var(--branco-muted);text-align:center;grid-column:1/-1;padding:2rem">Carregando peneiras...</p>`;
 
-  fetch('/peneiras')
+  fetch(`${API_URL}/peneiras`)
     .then(r => r.json())
     .then(json => {
       const todas = json.data || json;

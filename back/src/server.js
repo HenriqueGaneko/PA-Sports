@@ -1,50 +1,152 @@
-const express = require("express");
-const dotenv  = require("dotenv");
-const cors    = require("cors");
-const path    = require("path");
-
-const uploads = require("./utils/upload.js");
-const routes  = require("./view/routes");
+import dotenv from "dotenv";
+import express from "express";
+import os from "os";
+import path from "path";
+import { fileURLToPath } from "url";
+import uploads from "./middlewares/upload.js";
+import swRoutes from "./view/routes.js";
+import cors from "cors"
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const Port = process.env.API_PORT || 3600;
-const app  = express();
 
-const { db } = require('./databases/DatabaseContext.js');
+const app = express();
 
-app.use(express.json());
-app.use(cors({ origin: '*' }));
+// ========================================
+// CORS
+// ========================================
+// Configuração básica: Permite todas as origens (Útil para teste, evite em produção)
+app.use(cors());
 
-app.use(express.static(path.resolve(__dirname, '..', '..')));
+// Configuração recomendada para produção:
+// const corsOptions = {
+//   origin: 'http://localhost:5500', // URL padrão do seu frontend Vite
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true, // Permite o envio de cookies/headers de autenticação se necessário
+//   optionsSuccessStatus: 200 
+// };
 
-// ─── ROTAS DA API ────────────────────────────────────────────
-app.use(routes);
+// app.use(cors(corsOptions));
 
-// ─── UPLOADS ────────────────────────────────────────────────
-app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')));
+// ========================================
+// MIDDLEWARES
+// ========================================
 
-app.post('/upload', uploads.single('avatar'), (req, res) => {
-    if (!req.file) {
-        res.status(400).send('Erro ao fazer upload do arquivo!');
-    } else {
-        res.send('Arquivo enviado com sucesso!');
-    }
+app.use(express.json({ limit: "100mb" }));
+
+app.use(express.urlencoded({
+    limit: "100mb",
+    extended: true
+}));
+
+// ========================================
+// ROTAS
+// ========================================
+
+app.use(swRoutes);
+
+// ========================================
+// TESTE
+// ========================================
+
+app.get("/test", (req, res) => {
+    res.status(200).json({
+        message: "servidor rodando",
+        port: Port
+    });
 });
 
-// ─── INICIA SERVIDOR ────────────────────────────────────────
-async function startServer() {
-    //console.log(`Iniciando banco de dados: ${process.env.DB_TYPE}`);
-    console.log(`Iniciando banco de dados: `);
-    await db.init();
+// ========================================
+// IP DO SERVIDOR
+// ========================================
 
-    app.listen(Port, () => {
-        console.log(`\n Servidor rodando!`);
-        console.log(`   back   → http://localhost:${Port}`);
-        console.log(`   web → http://localhost:${Port}`);
-        console.log(`\n   Pressione CTRL+C para parar.\n`);
-        console.log(`\n   Desenvolvido por Henrique`);
+const getLocalIp = () => {
+
+    const interfaces = os.networkInterfaces();
+
+    for (const name of Object.keys(interfaces)) {
+
+        for (const iface of interfaces[name] || []) {
+
+            if (
+                iface.family === "IPv4" &&
+                !iface.internal
+            ) {
+                return iface.address;
+            }
+        }
+    }
+
+    return "localhost";
+};
+
+// ========================================
+// RETORNA IP DO SERVIDOR
+// ========================================
+
+app.get("/ip-servidor", (req, res) => {
+
+    const serverIp = getLocalIp();
+
+    res.json({
+        ipServidor: serverIp,
+        porta: Port
     });
-}
+});
 
-startServer();
+// ========================================
+// ARQUIVOS UPLOAD
+// ========================================
+
+app.use(
+    "/uploads",
+    express.static(
+        path.resolve(__dirname, "..", "uploads")
+    )
+);
+
+// ========================================
+// UPLOAD
+// ========================================
+
+app.post(
+    "/upload",
+    uploads.single("avatar"),
+    (req, res) => {
+
+        if (!req.file) {
+            return res.status(400).json({
+                message: "Erro ao fazer upload do arquivo!"
+            });
+        }
+
+        return res.status(200).json({
+            message: "Arquivo enviado com sucesso!"
+        });
+    }
+);
+
+// ========================================
+// SERVIDOR
+// ========================================
+
+app.listen(Port, () => {
+
+    const ipServidor = getLocalIp();
+
+    console.log(
+        `Servidor ouvindo em: http://${ipServidor}:${Port}`
+    );
+
+    console.log(
+        `Acesse também em: http://localhost:${Port}`
+    );
+
+    console.log(
+        "CTRL+C para encerrar o servidor"
+    );
+});
